@@ -4,12 +4,12 @@
     "slug": "Project1",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Icons/AppIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Images/SplashLogo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#010010"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Icons/AppIcon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shitanshu_00.Project1"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "59608abb-183a-4ac6-9d4a-531d45c37b0c"
+      }
     }
   }
 }
