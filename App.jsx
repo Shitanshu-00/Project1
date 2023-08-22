@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import Route from './Utils/Route';
+import 'expo-dev-client';
 
 export default function App() {
   

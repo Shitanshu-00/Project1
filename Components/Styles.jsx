@@ -48,7 +48,7 @@ export const Styles = StyleSheet.create({
     marginVertical: SIZES.Large,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 5
+    elevation: 5,
   },
 
   btnTxt: {

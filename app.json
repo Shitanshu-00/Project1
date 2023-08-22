@@ -3,6 +3,7 @@
     "name": "Project1",
     "slug": "Project1",
     "version": "1.0.0",
+    "plugins": ["@react-native-google-signin/google-signin"],
     "orientation": "portrait",
     "icon": "./assets/Icons/AppIcon.png",
     "userInterfaceStyle": "light",
@@ -18,6 +19,7 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/Icons/AppIcon.png",
         "backgroundColor": "#ffffff"
