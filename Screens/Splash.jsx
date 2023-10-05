@@ -16,7 +16,7 @@ const Splash = (props) => {
     }
 
     return (
-        <View style={Styles.container}>
+        <View style={[Styles.container,{alignItems:'center', justifyContent:'center'}]}>
             <Image source={images.Splash} />
         </View>
     )

@@ -7,7 +7,7 @@ export const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.black,
-    alignItems: 'center',
+    paddingTop: height*0.05,
   },
   container2: {
     flex: 1,
@@ -66,7 +66,7 @@ export const Styles = StyleSheet.create({
   LogoWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: height * 0.1
+    marginTop: height * 0.05
   },
 
   iconWrapper: { 
