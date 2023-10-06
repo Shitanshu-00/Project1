@@ -26,7 +26,7 @@ const Login = (props) => {
 
   const handleSubmit = (values, { resetForm }) => {
     auth().signInWithEmailAndPassword(values.email, values.password)
-        .then((response) => {
+      .then((response) => {
         props.navigation.navigate("BottomNav");
         resetForm();
       })
@@ -103,7 +103,7 @@ const Login = (props) => {
                 {touched.password && errors.password}
               </Text>
 
-              <View style={[Styles.rowView, { marginTop: SIZES.Large }]}>
+              <View style={[Styles.rowView, { marginTop: SIZES.Large, justifyContent: 'space-between' }]}>
                 <View style={Styles.rowView}>
                   <Checkbox
                     value={checked}

@@ -7,7 +7,7 @@ export const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.black,
-    paddingTop: height*0.05,
+    paddingTop: height * 0.05,
   },
   container2: {
     flex: 1,
@@ -38,7 +38,6 @@ export const Styles = StyleSheet.create({
   rowView: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     columnGap: width * 0.02,
   },
 
@@ -69,11 +68,17 @@ export const Styles = StyleSheet.create({
     marginTop: height * 0.05
   },
 
-  iconWrapper: { 
+  iconWrapper: {
     position: 'absolute',
-     alignItems: 'flex-end', 
-    right: width*0.04
-   }
+    alignItems: 'flex-end',
+    right: width * 0.04
+  },
+  title: {
+    fontFamily: FONTS.Roboto.bold,
+    color: '#fff',
+    fontSize: SIZES.Large,
+    
+  }
 
 
 });
