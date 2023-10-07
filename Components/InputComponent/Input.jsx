@@ -1,14 +1,16 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Dimensions } from 'react-native'
 import React from 'react'
 import { styles } from './styles'
 
-const Input = ({title, placeholder}) => {
+const {height, width} = Dimensions.get('window')
+
+const Input = ({title, placeholder, editable}) => {
   return (
-    <View>
+    <View style={{marginVertical: height*0.01}}>
       <View style={styles.labelWrapper} >
         <Text style={styles.label}>{title}</Text>
       </View>
-      <TextInput style={styles.input} placeholder={placeholder}/>
+      <TextInput style={styles.input} placeholder={placeholder} editable={editable}/>
     </View>
   )
 }
