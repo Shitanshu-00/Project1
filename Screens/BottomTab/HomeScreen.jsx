@@ -12,8 +12,8 @@ import images from "../../constants/images";
 import icons from "../../constants/icons";
 
 const HomeScreen = () => {
-  const [name, setName] = useState("Guest");
 
+  const [name, setName] = useState("Guest");
   const [user, setUser] = useState([]);
   useEffect(() => {
     getValue();
@@ -23,6 +23,7 @@ const HomeScreen = () => {
     const res = await AsyncStorage.getItem("User");
     res != null ? setUser(JSON.parse(res)) : null;
     setName(user.additionalUserInfo.profile.name);
+    console.log(res);
   };
 
   return (

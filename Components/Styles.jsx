@@ -77,7 +77,11 @@ export const Styles = StyleSheet.create({
     fontFamily: FONTS.Roboto.bold,
     color: '#fff',
     fontSize: SIZES.Large,
-    
+
+  },
+  headText: {
+    fontFamily: FONTS.Roboto.bold,
+    fontSize: height * 0.03,
   }
 
 

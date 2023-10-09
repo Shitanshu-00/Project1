@@ -8,17 +8,13 @@ import Button from '../Components/Button'
 const ResetPass = (props) => {
     const handlePress = () => {
         alert('Password Changed');
-        props.navigation.navigate('BottomNav');
+        props.navigation.replace('BottomNav');
     }
     return (
         <View style={Styles.container}>
             <View style={[Styles.container2, { paddingTop: height * 0.1 }]}>
                 <Text
-                    style={{
-                        fontFamily: FONTS.Roboto.bold,
-                        fontSize: height * 0.03,
-                        textAlign: "center",
-                    }}>
+                    style={[Styles.headText,{textAlign: "center"}]}>
                     Reset Password
                 </Text>
                 <Input placeholder={'Enter new password'} top={height * 0.04} />

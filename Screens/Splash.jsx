@@ -7,12 +7,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const Splash = (props) => {
 
     useEffect(() => {
-        setTimeout(() => checkLogin(), 2000)
+        setTimeout(() => checkLogin(), 2000);
+        
     }, []);
 
     const checkLogin =async()=>{
         token = await AsyncStorage.getItem("AccessToken");
         token ? (props.navigation.replace("BottomNav")) : (props.navigation.replace("Register"))
+        console.log(token);
     }
 
     return (
