@@ -8,6 +8,7 @@ import Button from '../Components/Button'
 const ResetPass = (props) => {
     const handlePress = () => {
         alert('Password Changed');
+        props.navigation.navigate('BottomNav');
     }
     return (
         <View style={Styles.container}>

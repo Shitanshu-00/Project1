@@ -112,7 +112,7 @@ const Login = (props) => {
                   />
                   <Text style={{ fontWeight: "bold" }}>Remember me</Text>
                 </View>
-                <Text style={{ color: COLORS.red, fontWeight: "bold" }}>
+                <Text style={{ color: COLORS.red, fontWeight: "bold" }} onPress={()=>props.navigation.navigate('ForgotPass')}>
                   Forgot Password?
                 </Text>
               </View>

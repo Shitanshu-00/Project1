@@ -16,7 +16,7 @@ export default function Route() {
     return (
         <NavigationContainer>
             <StatusBar backgroundColor='#010' style='light' />
-            <Stack.Navigator initialRouteName='ForgotPass' screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName='Splash' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='Splash' component={Splash} />
                 <Stack.Screen name='Register' component={Register} />
                 <Stack.Screen name='Login' component={Login} />
