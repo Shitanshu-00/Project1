@@ -11,7 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import images from "../../constants/images";
 import icons from "../../constants/icons";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
 
   const [name, setName] = useState("Guest");
   const [user, setUser] = useState([]);
@@ -40,7 +40,7 @@ const HomeScreen = () => {
           <TouchableOpacity>
             <Image source={icons.notification_bell} />
           </TouchableOpacity>
-          <TouchableOpacity style={{ alignItems: "center" }}>
+          <TouchableOpacity style={{ alignItems: "center" }} onPress={()=>props.navigation.navigate('Profile')}>
             <Image source={icons.Profile_Sm} resizeMode="contain" />
             <Text style={Styles.title_sm}>
               {name.length > 10 ? name.substring(0, 10) + "..." : name}

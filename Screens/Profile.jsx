@@ -7,15 +7,29 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Styles } from "../Components/Styles";
 import icons from "../constants/icons";
 import { Entypo } from "@expo/vector-icons";
 import Input from "../Components/InputComponent/Input";
 import Button from "../Components/Button";
 import { COLORS } from "../constants/theme";
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore'
 
 const Profile = (props) => {
+
+  const dbRef = firestore().collection('user');
+
+  useEffect(()=>{
+    getData();
+  },[])
+
+  const getData = async()=>{
+    const data = dbRef.doc().get()
+    console.log(data);
+  }
+
   return (
     <SafeAreaView style={Styles.container}>
       <View style={[Styles.rowView, { paddingHorizontal: width * 0.02 }]}>
@@ -40,13 +54,13 @@ const Profile = (props) => {
           paddingHorizontal: width * 0.05,
         }}>
         <View style={{ width: "100%" }}>
-          <Input title={"Name*"} />
-          <Input title={"Email*"} editable={false} />
-          <Input title={"Contact*"} />
-          <Input title={"Date of Birth"} />
-          <Input title={"Country"} />
-          <Input title={"State"} />
-          <Input title={"City"} />
+          <Input title={"Name*"} top={height*0.015}/>
+          <Input title={"Email*"} editable={false} top={height*0.015}/>
+          <Input title={"Contact*"} top={height*0.015}/>
+          <Input title={"Date of Birth"} top={height*0.015}/>
+          <Input title={"Country"} top={height*0.015}/>
+          <Input title={"State"}top={height*0.015}/>
+          <Input title={"City"} top={height*0.015}/>
           <Button
             title={"Edit Profile"}
             bgColor={COLORS.red}

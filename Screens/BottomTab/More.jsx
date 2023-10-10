@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  ScrollView,
   Image,
   TouchableOpacity,
   Dimensions,
@@ -13,7 +12,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { doc, getDoc } from "firebase/firestore";
 import icons from "../../constants/icons";
 import { Styles } from "./Styles.BottomTab";
-import Button from "../../Components/Button";
 import { COLORS } from "../../constants/theme";
 import auth from "@react-native-firebase/auth";
 import images from "../../constants/images";
@@ -42,7 +40,7 @@ const More = (props) => {
       const user = [];
       querySnapshot.forEach((doc) => {
         const { name, contact, city, state, pincode } = doc.data();
-        users.push({
+        user.push({
           name,
           contact,
           city,
@@ -56,7 +54,7 @@ const More = (props) => {
 
   return (
     <SafeAreaView style={Styles.container}>
-      <View style={[Styles.container, { backgroundColor: "#1C1B1D"}]}>
+      <View style={[Styles.container, { backgroundColor: "#1C1B1D" }]}>
         <View
           style={[
             Styles.rowView,
@@ -69,7 +67,7 @@ const More = (props) => {
           </View>
         </View>
         <View style={Styles.line}></View>
-        <Text style={{color: COLORS.white, textAlign: 'center'}} onPress={()=>handleLogout()}>Logout</Text>
+        <Text style={{ color: COLORS.white, textAlign: 'center' }} onPress={() => handleLogout()}>Logout</Text>
       </View>
     </SafeAreaView>
   );
