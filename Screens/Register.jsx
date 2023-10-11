@@ -76,6 +76,7 @@ const Register = (props) => {
         const user = response.user;
         AsyncStorage.setItem("AccessToken", user.accessToken);
         props.navigation.navigate("Login");
+        console.log('Email: ' +values.email+' Pass: '+ values.password);
         resetForm();
       })
       .catch((error) => {

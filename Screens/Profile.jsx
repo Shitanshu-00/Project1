@@ -7,33 +7,79 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Styles } from "../Components/Styles";
 import icons from "../constants/icons";
 import { Entypo } from "@expo/vector-icons";
 import Input from "../Components/InputComponent/Input";
 import Button from "../Components/Button";
 import { COLORS } from "../constants/theme";
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore'
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Formik } from "formik";
+import * as yup from "yup";
 
+const validationSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required("Name is required")
+    .matches(/^[\S]*$/, "Spaces not allowed")
+    .matches(/^[a-zA-Z]+$/, "Name must contain only Alphabets")
+    .min(3, "Name should have atleast 3 characters"),
+
+  contact: yup
+    .string()
+    .required('Contact is required')
+    .matches(/^[\S]*$/, "Spaces not allowed")
+    .matches(/^[0-9]*$/, "Enter a valid contact number")
+    .min(10, "Must be 10 digits"),
+
+  country: yup
+    .string()
+    .matches(/^[\S]*$/, "Spaces not allowed")
+    .matches(/^[a-zA-Z]+$/, "Country must contain only Alphabets")
+    .min(3, "Country should have atleast 3 characters"),
+
+  state: yup
+    .string()
+    .matches(/^[\S]*$/, "Spaces not allowed")
+    .matches(/^[a-zA-Z]+$/, "State must contain only Alphabets")
+    .min(3, "State should have atleast 3 characters"),
+
+  city: yup
+    .string()
+    .matches(/^[\S]*$/, "Spaces not allowed")
+    .matches(/^[a-zA-Z]+$/, "City must contain only Alphabets")
+    .min(3, "City should have atleast 3 characters"),
+});
+
+// <<-------------------- Main Function --------------------->>
 const Profile = (props) => {
+  const dbRef = firestore().collection("users").doc(userId);
+  const userId = AsyncStorage.getItem("UserId");
+  const email = auth().currentUser.email;
 
-  const dbRef = firestore().collection('user');
-
-  useEffect(()=>{
+  useEffect(() => {
     getData();
-  },[])
+  }, []);
 
-  const getData = async()=>{
-    const data = dbRef.doc().get()
-    console.log(data);
-  }
+  const getData = async () => {
+    auth().onAuthStateChanged(user=>{
+      if(user){
+        dbRef.onSnapshot(snap => console.log(snap))
+      }
+    })
+  };
+
+  const handleSubmit = (values) => {
+    dbRef.set(values);
+  };
 
   return (
     <SafeAreaView style={Styles.container}>
       <View style={[Styles.rowView, { paddingHorizontal: width * 0.02 }]}>
-        <TouchableOpacity onPress={()=>props.navigation.goBack()}>
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <Entypo name="chevron-small-left" size={30} color="white" />
         </TouchableOpacity>
         <Text style={[Styles.title, { marginLeft: width * 0.32 }]}>
@@ -53,20 +99,119 @@ const Profile = (props) => {
           alignItems: "center",
           paddingHorizontal: width * 0.05,
         }}>
-        <View style={{ width: "100%" }}>
-          <Input title={"Name*"} top={height*0.015}/>
-          <Input title={"Email*"} editable={false} top={height*0.015}/>
-          <Input title={"Contact*"} top={height*0.015}/>
-          <Input title={"Date of Birth"} top={height*0.015}/>
-          <Input title={"Country"} top={height*0.015}/>
-          <Input title={"State"}top={height*0.015}/>
-          <Input title={"City"} top={height*0.015}/>
-          <Button
-            title={"Edit Profile"}
-            bgColor={COLORS.red}
-            top={height * 0.04}
-          />
-        </View>
+        <Formik
+          initialValues={{
+            name: "",
+            contact: "",
+            dob: "",
+            country: "",
+            state: "",
+            city: "",
+          }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}>
+          {({
+            handleChange,
+            setFieldTouched,
+            handleSubmit,
+            touched,
+            values,
+            errors,
+          }) => (
+            <View style={{ width: "100%" }}>
+              <Input
+                title={"Name*"}
+                top={height * 0.015}
+                onChangeText={handleChange("name")}
+                onBlur={() => setFieldTouched("name")}
+                value={values.name}
+              />
+              <Text
+                style={[
+                  Styles.errors,
+                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
+                ]}>
+                {touched.name && errors.name}
+              </Text>
+
+              <Input
+                title={"Email*"}
+                editable={false}
+                top={height * 0.015}
+                value={email}
+              />
+
+              <Input
+                title={"Contact*"}
+                top={height * 0.015}
+                onChangeText={handleChange("contact")}
+                onBlur={() => setFieldTouched("contact")}
+                value={values.contact}
+              />
+              <Text
+                style={[
+                  Styles.errors,
+                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
+                ]}>
+                {touched.contact && errors.contact}
+              </Text>
+
+              <Input title={"Date of Birth"} top={height * 0.015} />
+
+              <Input
+                title={"Country"}
+                top={height * 0.015}
+                onChangeText={handleChange("country")}
+                onBlur={() => setFieldTouched("country")}
+                value={values.country}
+              />
+              <Text
+                style={[
+                  Styles.errors,
+                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
+                ]}>
+                {touched.country && errors.country}
+              </Text>
+
+              <Input
+                title={"State"}
+                top={height * 0.015}
+                onChangeText={handleChange("state")}
+                onBlur={() => setFieldTouched("state")}
+                value={values.state}
+              />
+              <Text
+                style={[
+                  Styles.errors,
+                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
+                ]}>
+                {touched.state && errors.state}
+              </Text>
+
+              <Input
+                title={"City"}
+                top={height * 0.015}
+                onChangeText={handleChange("city")}
+                onBlur={() => setFieldTouched("city")}
+                value={values.city}
+              />
+              <Text
+                style={[
+                  Styles.errors,
+                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
+                ]}>
+                {touched.city && errors.city}
+              </Text>
+
+              <Button
+                title={"Edit Profile"}
+                bgColor={COLORS.red}
+                top={height * 0.04}
+                onPress={handleSubmit}
+              />
+            </View>
+          )}
+        </Formik>
       </ScrollView>
     </SafeAreaView>
   );

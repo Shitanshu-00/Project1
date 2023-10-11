@@ -5,7 +5,16 @@ import { COLORS } from "../../constants/theme";
 
 const { height, width } = Dimensions.get("window");
 
-const Input = ({ title, placeholder, editable, top }) => {
+const Input = ({
+  title,
+  placeholder,
+  editable,
+  top,
+  onChangeText,
+  value,
+  onBlur,
+  defaultValue,
+}) => {
   return (
     <View style={{ marginTop: top }}>
       <View style={styles.labelWrapper}>
@@ -16,6 +25,10 @@ const Input = ({ title, placeholder, editable, top }) => {
         placeholder={placeholder}
         editable={editable}
         cursorColor={COLORS.red}
+        onChangeText={onChangeText}
+        onBlur={onBlur}
+        value={value}
+        defaultValue={defaultValue}
       />
     </View>
   );

@@ -20,6 +20,8 @@ import firestore from "@react-native-firebase/firestore";
 const { height, width } = Dimensions.get("screen");
 
 const More = (props) => {
+
+  const uid = auth().currentUser.uid
   const dbRef = firestore().collection('users');
   const [users, setUsers] = useState([]);
   const email = auth().currentUser.email;
@@ -27,7 +29,7 @@ const More = (props) => {
 
   useEffect(() => {
     readData();
-    console.log(users);
+    console.log(uid);
   }, []);
 
   const handleLogout = () => {
@@ -47,7 +49,7 @@ const More = (props) => {
           state,
           pincode,
         });
-        setUsers(user);
+        setUsers([...user]);
       });
     });
   };
@@ -64,6 +66,7 @@ const More = (props) => {
           <View style={{ paddingHorizontal: width * 0.02 }}>
             <Text style={{ color: COLORS.white }}>{name}</Text>
             <Text style={{ color: COLORS.white }}>{email}</Text>
+            <Text style={{ color: COLORS.white }}>{users.map(user => user.name)}</Text>
           </View>
         </View>
         <View style={Styles.line}></View>

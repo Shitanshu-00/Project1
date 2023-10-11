@@ -14,7 +14,6 @@ const Splash = (props) => {
     const checkLogin =async()=>{
         token = await AsyncStorage.getItem("AccessToken");
         token ? (props.navigation.replace("BottomNav")) : (props.navigation.replace("Register"))
-        console.log(token);
     }
 
     return (

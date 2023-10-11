@@ -17,6 +17,7 @@ import Checkbox from "expo-checkbox";
 import Button from "../Components/Button";
 import icons from "../constants/icons";
 import auth from '@react-native-firebase/auth'
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { height, width } = Dimensions.get("window");
 
@@ -28,6 +29,7 @@ const Login = (props) => {
     auth().signInWithEmailAndPassword(values.email, values.password)
       .then((response) => {
         props.navigation.navigate("BottomNav");
+        AsyncStorage.setItem('UserId', response.user.uid);
         resetForm();
       })
       .catch((error) => {
