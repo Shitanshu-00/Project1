@@ -7,23 +7,27 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Styles } from "./Styles.BottomTab";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import images from "../../constants/images";
 import icons from "../../constants/icons";
+import auth from "@react-native-firebase/auth";
+import storage from '@react-native-firebase/storage'
+
 
 const HomeScreen = (props) => {
+  const [name, setName] = useState("");
+  const storageRef = storage().ref('/images/')
 
-  const [name, setName] = useState("Guest");
-  const [user, setUser] = useState([]);
   useEffect(() => {
     getValue();
+    console.log(storageRef.getMetadata());
   }, []);
 
   const getValue = async () => {
-    const res = await AsyncStorage.getItem("User");
-    res != null ? setUser(JSON.parse(res)) : null;
-    setName(user.additionalUserInfo.profile.name);
-    console.log(res);
+    if (!auth().currentUser.displayName) {
+      setName("Guest");
+    } else {
+      setName(auth().currentUser.displayName);
+    }
   };
 
   return (
@@ -40,7 +44,9 @@ const HomeScreen = (props) => {
           <TouchableOpacity>
             <Image source={icons.notification_bell} />
           </TouchableOpacity>
-          <TouchableOpacity style={{ alignItems: "center" }} onPress={()=>props.navigation.navigate('Profile')}>
+          <TouchableOpacity
+            style={{ alignItems: "center" }}
+            onPress={() => props.navigation.navigate("Profile")}>
             <Image source={icons.Profile_Sm} resizeMode="contain" />
             <Text style={Styles.title_sm}>
               {name.length > 10 ? name.substring(0, 10) + "..." : name}

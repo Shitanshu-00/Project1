@@ -24,7 +24,6 @@ const validationSchema = yup.object().shape({
   name: yup
     .string()
     .required("Name is required")
-    .matches(/^[\S]*$/, "Spaces not allowed")
     .matches(/^[a-zA-Z]+$/, "Name must contain only Alphabets")
     .min(3, "Name should have atleast 3 characters"),
 
@@ -37,43 +36,37 @@ const validationSchema = yup.object().shape({
 
   country: yup
     .string()
-    .matches(/^[\S]*$/, "Spaces not allowed")
     .matches(/^[a-zA-Z]+$/, "Country must contain only Alphabets")
     .min(3, "Country should have atleast 3 characters"),
 
   state: yup
     .string()
-    .matches(/^[\S]*$/, "Spaces not allowed")
     .matches(/^[a-zA-Z]+$/, "State must contain only Alphabets")
     .min(3, "State should have atleast 3 characters"),
 
   city: yup
     .string()
-    .matches(/^[\S]*$/, "Spaces not allowed")
     .matches(/^[a-zA-Z]+$/, "City must contain only Alphabets")
     .min(3, "City should have atleast 3 characters"),
 });
 
 // <<-------------------- Main Function --------------------->>
 const Profile = (props) => {
+  const userId = auth().currentUser.uid;
   const dbRef = firestore().collection("users").doc(userId);
-  const userId = AsyncStorage.getItem("UserId");
-  const email = auth().currentUser.email;
+  const email = {'email': auth().currentUser.email};
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    auth().onAuthStateChanged(user=>{
-      if(user){
-        dbRef.onSnapshot(snap => console.log(snap))
-      }
-    })
+    // console.log(dbRef);
   };
 
   const handleSubmit = (values) => {
     dbRef.set(values);
+    dbRef.update(email)
   };
 
   return (
@@ -138,7 +131,7 @@ const Profile = (props) => {
                 title={"Email*"}
                 editable={false}
                 top={height * 0.015}
-                value={email}
+                value={email.email}
               />
 
               <Input
