@@ -2,7 +2,8 @@ import { View, Image } from 'react-native'
 import React, { useEffect } from 'react'
 import { Styles } from '../Components/Styles'
 import images from '../constants/images'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth'
 
 const Splash = (props) => {
 
@@ -12,8 +13,9 @@ const Splash = (props) => {
     }, []);
 
     const checkLogin =async()=>{
-        token = await AsyncStorage.getItem("AccessToken");
-        token ? (props.navigation.replace("BottomNav")) : (props.navigation.replace("Register"))
+        await auth().onAuthStateChanged(user =>{
+            user ? (props.navigation.replace("BottomNav")) : (props.navigation.replace("Register"));
+        })
     }
 
     return (
