@@ -6,6 +6,7 @@ import {
   Dimensions,
   SafeAreaView,
   StyleSheet,
+  Linking,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import icons from "../../constants/icons";
@@ -130,13 +131,24 @@ const More = (props) => {
         <View style={{ alignItems: "center", marginVertical: height * 0.05 }}>
           <Text style={[styles.text, { fontWeight: "800" }]}># FOLLOW US</Text>
           <View style={[Styles.rowView, { gap: width * 0.02 }]}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                Linking.openURL(
+                  "https://www.facebook.com/shitanshu.tripathi.351"
+                )
+              }>
               <Entypo name="facebook-with-circle" size={30} color="#337FFF" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                Linking.openURL("https://www.twitter.com/shitanshu__00")
+              }>
               <Entypo name="twitter-with-circle" size={30} color="#33CCFF" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                Linking.openURL("https://www.instagram.com/Shitanshu_0")
+              }>
               <Entypo name="instagram-with-circle" size={30} color="#5B4FE9" />
             </TouchableOpacity>
           </View>
