@@ -9,13 +9,15 @@ import BottomNav from '../Screens/BottomNav';
 import Profile from '../Screens/Profile';
 import ForgotPass from '../Screens/ForgotPass';
 import ResetPass from '../Screens/ResetPass';
+import About from '../Screens/About';
+import Advertise from '../Screens/Advertise';
 
 const Stack = createNativeStackNavigator();
 
 export default function Route() {
     return (
         <NavigationContainer>
-            <StatusBar backgroundColor='#010' style='light' />
+            <StatusBar backgroundColor='#010' style='light' animated={true} />
             <Stack.Navigator initialRouteName='Splash' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='Splash' component={Splash} />
                 <Stack.Screen name='Register' component={Register} />
@@ -24,6 +26,8 @@ export default function Route() {
                 <Stack.Screen name='Profile' component={Profile} />
                 <Stack.Screen name='ForgotPass' component={ForgotPass} />
                 <Stack.Screen name='ResetPass' component={ResetPass}/>
+                <Stack.Screen name='About' component={About}/>
+                <Stack.Screen name='Advertise' component={Advertise}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
