@@ -34,8 +34,8 @@ export const Styles = StyleSheet.create({
         marginBottom:-15,
     },
     line: {
-        borderWidth: 0.5,
-        borderColor: '#fff',
+        borderWidth: 1,
+        borderColor: COLORS.red,
         marginVertical: height*0.02
     }
 })

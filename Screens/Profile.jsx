@@ -118,6 +118,7 @@ const Profile = (props) => {
                 onChangeText={handleChange("name")}
                 onBlur={() => setFieldTouched("name")}
                 value={values.name}
+                maxLength={25}
               />
               <Text
                 style={[
@@ -140,6 +141,7 @@ const Profile = (props) => {
                 onChangeText={handleChange("contact")}
                 onBlur={() => setFieldTouched("contact")}
                 value={values.contact}
+                maxLength={10}
               />
               <Text
                 style={[
@@ -157,6 +159,7 @@ const Profile = (props) => {
                 onChangeText={handleChange("country")}
                 onBlur={() => setFieldTouched("country")}
                 value={values.country}
+                maxLength={16}
               />
               <Text
                 style={[
@@ -172,6 +175,7 @@ const Profile = (props) => {
                 onChangeText={handleChange("state")}
                 onBlur={() => setFieldTouched("state")}
                 value={values.state}
+                maxLength={16}
               />
               <Text
                 style={[
@@ -187,6 +191,7 @@ const Profile = (props) => {
                 onChangeText={handleChange("city")}
                 onBlur={() => setFieldTouched("city")}
                 value={values.city}
+                maxLength={16}
               />
               <Text
                 style={[

@@ -12,6 +12,7 @@ import icons from "../constants/icons";
 const { height, width } = Dimensions.get("window");
 const Bottom = createBottomTabNavigator();
 
+
 const BottomNav = () => {
   return (
     <Bottom.Navigator

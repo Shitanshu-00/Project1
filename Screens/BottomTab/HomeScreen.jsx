@@ -10,24 +10,23 @@ import { Styles } from "./Styles.BottomTab";
 import images from "../../constants/images";
 import icons from "../../constants/icons";
 import auth from "@react-native-firebase/auth";
-import storage from '@react-native-firebase/storage'
-
+import firestore from '@react-native-firebase/firestore'
 
 const HomeScreen = (props) => {
   const [name, setName] = useState("");
-  const storageRef = storage().ref('/images/')
+  // const users =  firestore().collection('users').doc(auth().currentUser.uid).get();
 
   useEffect(() => {
     getValue();
-    console.log(storageRef.getMetadata());
+    // console.log(users);
   }, []);
 
   const getValue = async () => {
-    if (!auth().currentUser.displayName) {
-      setName("Guest");
-    } else {
-      setName(auth().currentUser.displayName);
-    }
+    // if (auth().currentUser.displayName) {
+    //   setName(auth().currentUser.displayName);
+    // } else if {
+      
+    // }
   };
 
   return (

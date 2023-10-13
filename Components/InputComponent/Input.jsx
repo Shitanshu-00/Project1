@@ -14,6 +14,7 @@ const Input = ({
   value,
   onBlur,
   defaultValue,
+  maxLength
 }) => {
   return (
     <View style={{ marginTop: top }}>
@@ -29,6 +30,7 @@ const Input = ({
         onBlur={onBlur}
         value={value}
         defaultValue={defaultValue}
+        maxLength={maxLength}
       />
     </View>
   );
