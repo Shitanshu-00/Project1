@@ -11,6 +11,7 @@ import ForgotPass from '../Screens/ForgotPass';
 import ResetPass from '../Screens/ResetPass';
 import About from '../Screens/About';
 import Advertise from '../Screens/Advertise';
+import Privacy from '../Screens/Privacy';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ export default function Route() {
                 <Stack.Screen name='ResetPass' component={ResetPass}/>
                 <Stack.Screen name='About' component={About}/>
                 <Stack.Screen name='Advertise' component={Advertise}/>
+                <Stack.Screen name='Privacy' component={Privacy}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

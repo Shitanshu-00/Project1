@@ -121,7 +121,7 @@ const More = (props) => {
           <Text style={styles.text} onPress={()=>props.navigation.navigate('About')}>About Us</Text>
           <Text style={styles.text}>Contact Us</Text>
           <Text style={styles.text} onPress={()=>props.navigation.navigate('Advertise')}>Advertise with Us</Text>
-          <Text style={styles.text}>Privacy Policy</Text>
+          <Text style={styles.text} onPress={()=>props.navigation.navigate('Privacy')}>Privacy Policy</Text>
           <Text style={styles.text} onPress={() => handleLogout()}>
             Logout
           </Text>
