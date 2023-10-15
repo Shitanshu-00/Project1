@@ -12,6 +12,7 @@ import ResetPass from '../Screens/ResetPass';
 import About from '../Screens/About';
 import Advertise from '../Screens/Advertise';
 import Privacy from '../Screens/Privacy';
+import Terms from '../Screens/Terms';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function Route() {
                 <Stack.Screen name='About' component={About}/>
                 <Stack.Screen name='Advertise' component={Advertise}/>
                 <Stack.Screen name='Privacy' component={Privacy}/>
+                <Stack.Screen name='Terms' component={Terms}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

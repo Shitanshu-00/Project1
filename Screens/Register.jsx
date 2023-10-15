@@ -163,10 +163,10 @@ const Register = (props) => {
                 />
                 <Text>
                   By submitting this form I accept to the{" "}
-                  <Text style={{ color: COLORS.red }}>
+                  <Text style={{ color: COLORS.red }} onPress={()=>props.navigation.navigate('Terms')}>
                     Terms &{"\n"} Conditions
                   </Text>{" "}
-                  and <Text style={{ color: COLORS.red }}>Privacy Policy</Text>{" "}
+                  and <Text style={{ color: COLORS.red }} onPress={()=>props.navigation.navigate('Privacy')}>Privacy Policy</Text>{" "}
                   of this platform.
                 </Text>
               </View>
