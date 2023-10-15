@@ -60,7 +60,7 @@ const ForgotPass = (props) => {
                 value={values.password}
                 maxLength={30}
               />
-              <Text style={[Styles.errors,{marginLeft: width*0.04}]}>{touched.email && errors.email}</Text>
+              <Text style={[Styles.errors,{marginLeft: width*0.04, fontSize: height*0.016}]}>{touched.email && errors.email}</Text>
 
               <Button
                 title={"SEND"}
