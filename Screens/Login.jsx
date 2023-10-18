@@ -26,6 +26,7 @@ const Login = (props) => {
   const [visible, setVisible] = useState(true);
 
   const handleSubmit = (values, { resetForm }) => {
+    console.log('Login');
     auth().signInWithEmailAndPassword(values.email, values.password)
       .then((response) => {
         props.navigation.navigate("BottomNav");

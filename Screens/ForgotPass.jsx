@@ -1,24 +1,40 @@
 import { View, Text, Dimensions, Modal, Image, TextInput } from "react-native";
 import React, { useState } from "react";
 import { Styles } from "../Components/Styles";
-import { COLORS, FONTS, SIZES } from "../constants/theme";
+import { COLORS, FONTS } from "../constants/theme";
 import Button from "../Components/Button";
 import { modal } from "./Styles/screenStyles";
 import icons from "../constants/icons";
 import { styles } from "../Components/InputComponent/styles";
 import { Formik } from "formik";
-import { loginSchema } from "../Utils/Schema";
+import * as yup from 'yup';
+import auth from '@react-native-firebase/auth'
 
 const { height, width } = Dimensions.get("window");
+
+const emailSchema = yup.object().shape({
+  email: yup
+  .string()
+  .email("Please enter a valid email address")
+  .required("Email ID is required")
+  .matches(
+    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    "Please enter valid email"
+  ),
+})
 
 const ForgotPass = (props) => {
   const [visible, setVisible] = useState(false);
 
   const handleSubmit = (values) => {
-    setVisible(true);
-    setTimeout(() => {
-      props.navigation.replace("ResetPass");
-    }, 2000);
+      auth().sendPasswordResetEmail(values.email).then(()=>{  ``
+        setVisible(true);
+        setTimeout(() => {
+          props.navigation.replace("ResetPass");
+        }, 2000);
+      }).catch(error=>{
+        alert(error.code);
+      })
   };
 
   return (
@@ -40,7 +56,7 @@ const ForgotPass = (props) => {
 
         {/* <<---------- Formik Validation --------->> */}
         <Formik
-          validationSchema={loginSchema}
+          validationSchema={emailSchema}
           initialValues={{ email: "" }}
           onSubmit={handleSubmit}>
           {({
@@ -57,7 +73,7 @@ const ForgotPass = (props) => {
                 placeholder={"Enter your email"}
                 onChangeText={handleChange("email")}
                 onBlur={() => setFieldTouched("email")}
-                value={values.password}
+                value={values.email}
                 maxLength={30}
               />
               <Text style={[Styles.errors,{marginLeft: width*0.04, fontSize: height*0.016}]}>{touched.email && errors.email}</Text>

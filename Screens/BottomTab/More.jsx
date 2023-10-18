@@ -29,7 +29,6 @@ const More = (props) => {
 
   useEffect(() => {
     readData();
-    console.log(dbRef);
   }, []);
 
   // <<-------------------- Logout Function --------------------->>

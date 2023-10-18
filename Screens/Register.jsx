@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Modal,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Styles } from "../Components/Styles";
@@ -17,16 +18,17 @@ import { loginSchema } from "../Utils/Schema";
 import Checkbox from "expo-checkbox";
 import Button from "../Components/Button";
 import icons from "../constants/icons";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import auth from "@react-native-firebase/auth";
+import { modal } from "./Styles/screenStyles";
 
 const { height, width } = Dimensions.get("window");
 
 const Register = (props) => {
   const [checked, setChecked] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
@@ -53,11 +55,9 @@ const Register = (props) => {
 
   const googleSignin = async () => {
     const { idToken } = await GoogleSignin.signIn();
-    AsyncStorage.setItem("AccessToken", idToken);
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    const user_signIn = auth().signInWithCredential(googleCredential);
 
-    user_signIn
+    auth().signInWithCredential(googleCredential)
       .then((res) => {
         const user = JSON.stringify(res);
         AsyncStorage.setItem("User", user);
@@ -67,17 +67,25 @@ const Register = (props) => {
         alert(error);
       });
   };
-  {
-    /*----- Registration using Email and Password -----*/
-  }
+
+  /*----- Registration using Email and Password -----*/
+
   const handleSubmit = (values, { resetForm }) => {
     auth().createUserWithEmailAndPassword(values.email, values.password)
-      .then((response) => {
-        const user = response.user;
-        AsyncStorage.setItem("AccessToken", user.accessToken);
-        props.navigation.navigate("Login");
-        console.log('Email: ' +values.email+' Pass: '+ values.password);
-        resetForm();
+      .then((res) => {
+        setLoading(true);
+        auth().currentUser.sendEmailVerification()
+    //     setTimeout(()=>{
+    //       if (auth().currentUser.emailVerified) {
+    //         setLoading(false);
+    //         props.navigation.navigate("Login");
+    //       }else{
+    //         auth().currentUser.delete()
+    //       }
+    //     },5000);
+       
+    //     // console.log(res)
+    //     // resetForm();
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
@@ -85,6 +93,8 @@ const Register = (props) => {
         }
         if (error.code === "auth/invalid-email") {
           alert("Enter valid Email Address");
+        } else {
+          alert(error.code)
         }
       });
   };
@@ -163,10 +173,10 @@ const Register = (props) => {
                 />
                 <Text>
                   By submitting this form I accept to the{" "}
-                  <Text style={{ color: COLORS.red }} onPress={()=>props.navigation.navigate('Terms')}>
+                  <Text style={{ color: COLORS.red }} onPress={() => props.navigation.navigate('Terms')}>
                     Terms &{"\n"} Conditions
                   </Text>{" "}
-                  and <Text style={{ color: COLORS.red }} onPress={()=>props.navigation.navigate('Privacy')}>Privacy Policy</Text>{" "}
+                  and <Text style={{ color: COLORS.red }} onPress={() => props.navigation.navigate('Privacy')}>Privacy Policy</Text>{" "}
                   of this platform.
                 </Text>
               </View>
@@ -180,6 +190,7 @@ const Register = (props) => {
             </View>
           )}
         </Formik>
+
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Text>OR</Text>
           <View style={Styles.rowView}>
@@ -210,6 +221,16 @@ const Register = (props) => {
               Log In{" "}
             </Text>{" "}
           </Text>
+          {
+            <Modal visible={loading} transparent>
+              <View style={modal.container}>
+                <View style={[modal.centerView, {alignItems:'center', justifyContent:'center'}]}>
+                  <ActivityIndicator size={'large'} color={COLORS.red} />
+                  <Text style={{textAlign:'center'}}>A verification link has been sent to your registered email address.</Text>
+                </View>
+              </View>
+            </Modal>
+          }
         </View>
       </View>
     </SafeAreaView>

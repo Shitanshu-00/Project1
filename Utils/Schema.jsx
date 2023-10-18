@@ -16,8 +16,20 @@ export const loginSchema = yup.object().shape({
       /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
       `Please enter a password with atleast 8 characters, atleast 1 number, atleast 1 uppercase, atleast 1 lowercase and atleast 1 special character.`
     ),
-    confirmPass: yup
-    .string()
-    .required('Confirm Password is required.')
-    .oneOf([yup.ref('pass'), null], 'Password should match the new password'),
+   
 });
+
+export const passwordSchema = yup.object().shape({
+  password: yup
+  .string()
+  .required("Password is required")
+  .matches(
+    /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+    `Please enter a password with atleast 8 characters, atleast 1 number, atleast 1 uppercase, atleast 1 lowercase and atleast 1 special character.`
+  ),
+
+  confirmPass: yup
+  .string()
+  .required('Confirm Password is required.')
+  .oneOf([yup.ref('password'), null], 'Password should match the new password'),
+})

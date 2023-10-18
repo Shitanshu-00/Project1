@@ -10,7 +10,6 @@ import { Styles } from "./Styles.BottomTab";
 import images from "../../constants/images";
 import icons from "../../constants/icons";
 import auth from "@react-native-firebase/auth";
-import firestore from '@react-native-firebase/firestore'
 
 const HomeScreen = (props) => {
   const [name, setName] = useState("");
@@ -18,7 +17,6 @@ const HomeScreen = (props) => {
 
   useEffect(() => {
     getValue();
-    // console.log(users);
   }, []);
 
   const getValue = async () => {

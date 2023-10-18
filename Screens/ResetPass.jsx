@@ -11,17 +11,22 @@ import { Styles } from "../Components/Styles";
 import { COLORS, FONTS, SIZES } from "../constants/theme";
 import Button from "../Components/Button";
 import { Formik } from "formik";
-import { loginSchema } from "../Utils/Schema";
 import { styles } from "../Components/InputComponent/styles";
 import icons from "../constants/icons";
+import { passwordSchema } from "../Utils/Schema";
+import auth from '@react-native-firebase/auth';
 
 const ResetPass = (props) => {
 
     const [visible, setVisible] = useState(true);
 
   const handleSubmit = (values) => {
-    alert("Password Changed");
-    props.navigation.replace("BottomNav");
+    auth().confirmPasswordReset(code, values.password).then(()=>{
+      alert("Password Changed");
+      props.navigation.replace("BottomNav");
+    }).catch(()=>{
+      alert(error.code);
+    })
   };
   return (
     <View style={Styles.container}>
@@ -32,7 +37,7 @@ const ResetPass = (props) => {
 
         {/* <<---------- Formik Validation --------->> */}
         <Formik
-          validationSchema={loginSchema}
+          validationSchema={passwordSchema}
           initialValues={{ password: "", confirmPass: "" }}
           onSubmit={handleSubmit}>
           {({
