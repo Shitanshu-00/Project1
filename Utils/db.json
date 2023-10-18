@@ -1,0 +1,105 @@
+{
+  "matches": [
+    {
+      "ICC World Cup 2022": [
+        {
+          "id": 1,
+          "status": "LIVE",
+          "country1": {
+            "name": "INDIA",
+            "flag": "../assets/Icons/flagIndia.png",
+            "runs": 19,
+            "wickets": 1,
+            "overs": 1.4
+          },
+          "country2": {
+            "name": "SOUTH AFRICA",
+            "flag": "../assets/Icons/flagSA.png",
+            "runs": 19,
+            "wickets": 1,
+            "overs": 1.4
+          }
+        },
+        {
+          "id": 2,
+          "status": "LIVE",
+          "country1": {
+            "name": "INDIA",
+            "flag": "../assets/Icons/flagIndia.png",
+            "runs": 19,
+            "wickets": 1,
+            "overs": 1.4
+          },
+          "country2": {
+            "name": "SOUTH AFRICA",
+            "flag": "../assets/Icons/flagSA.png",
+            "runs": 19,
+            "wickets": 1,
+            "overs": 1.4
+          }
+        },
+        {
+          "id": 3,
+          "status": "LIVE",
+          "country1": {
+            "name": "INDIA",
+            "flag": "../assets/Icons/flagIndia.png",
+            "runs": 19,
+            "wickets": 1,
+            "overs": 1.4
+          },
+          "country2": {
+            "name": "SOUTH AFRICA",
+            "flag": "../assets/Icons/flagSA.png",
+            "runs": 19,
+            "wickets": 1,
+            "overs": 1.4
+          }
+        }
+      ]
+    }
+  ],
+  "trending": [
+    {
+      "videos": [
+        {
+          "id": 1,
+          "body": "some comment",
+          "postId": 1,
+          "video": "../assets/Videos/SAvsIndia_ ICC_CWC_2019.mp4",
+          "thumbnail": "../assets/Images/Thumbnail.png"
+        },
+        {
+          "id": 2,
+          "body": "some comment",
+          "postId": 2,
+          "video": "../assets/Videos/SAvsIndia_ ICC_CWC_2019.mp4",
+          "thumbnail": "../assets/Images/Thumbnail.png"
+        },
+        {
+          "id": 3,
+          "body": "some comment",
+          "postId": 3,
+          "video": "../assets/Videos/SAvsIndia_ ICC_CWC_2019.mp4",
+          "thumbnail": "../assets/Images/Thumbnail.png"
+        }
+      ],
+      "news": [
+        {
+          "id": 1,
+          "image": "../assets/Images/NewsImg.png",
+          "headline": "Can India ride the T20 evolutionary tide?",
+          "body": "If change is happening, it is happening around BCCI. And because they continue to hold all the best cards in the pack, they have the ability to make this transition work for them"
+        },
+        {
+          "id": 2,
+          "image": "../assets/Images/NewsCricket.png",
+          "headline": "Team India crush Thailand and reach semi-final of Asia cup",
+          "body": "India strolled to a nine-wicket win against Thailand in the Women's T20 Asia Cup after spinners Deepti Sharma, Sneh Rana and Rajeshwari Gayakwad shared seven wickets between them. Thailand were restricted to 37, their third-lowest total in the Asia Cup, which table-toppers India then chased down in six overs, losing just one wicket.",
+          "sub-heading": "Thailand openers cautious",
+          "sub-body": "India strolled to a nine-wicket win against Thailand in the Women's T20 Asia Cup after spinners Deepti Sharma, Sneh Rana and Rajeshwari Gayakwad shared seven wickets between them. Thailand were restricted to 37, their third-lowest total in the Asia Cup, which table-toppers India then chased down in six overs, losing just one wicket."
+        }
+      ]
+    }
+  ]
+}
