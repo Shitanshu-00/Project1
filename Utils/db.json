@@ -1,10 +1,11 @@
 {
-  "matches": [
+  "matches":
     {
       "ICC World Cup 2022": [
         {
           "id": 1,
           "status": "LIVE",
+          "highlight":"India won the toss and elected to bat.",
           "country1": {
             "name": "INDIA",
             "flag": "../assets/Icons/flagIndia.png",
@@ -23,6 +24,7 @@
         {
           "id": 2,
           "status": "LIVE",
+          "highlight":"India won the toss and elected to bat.",
           "country1": {
             "name": "INDIA",
             "flag": "../assets/Icons/flagIndia.png",
@@ -41,6 +43,7 @@
         {
           "id": 3,
           "status": "LIVE",
+          "highlight":"India won the toss and elected to bat.",
           "country1": {
             "name": "INDIA",
             "flag": "../assets/Icons/flagIndia.png",
@@ -57,28 +60,27 @@
           }
         }
       ]
-    }
-  ],
+    },
   "trending": [
     {
       "videos": [
         {
           "id": 1,
-          "body": "some comment",
+          "title": "Ecclestone rips through South Africa batting line-up | CWC22",
           "postId": 1,
           "video": "../assets/Videos/SAvsIndia_ ICC_CWC_2019.mp4",
           "thumbnail": "../assets/Images/Thumbnail.png"
         },
         {
           "id": 2,
-          "body": "some comment",
+          "title": "Ecclestone rips through South Africa batting line-up | CWC22",
           "postId": 2,
           "video": "../assets/Videos/SAvsIndia_ ICC_CWC_2019.mp4",
           "thumbnail": "../assets/Images/Thumbnail.png"
         },
         {
           "id": 3,
-          "body": "some comment",
+          "title": "Ecclestone rips through South Africa batting line-up | CWC22",
           "postId": 3,
           "video": "../assets/Videos/SAvsIndia_ ICC_CWC_2019.mp4",
           "thumbnail": "../assets/Images/Thumbnail.png"
@@ -89,7 +91,7 @@
           "id": 1,
           "image": "../assets/Images/NewsImg.png",
           "headline": "Can India ride the T20 evolutionary tide?",
-          "body": "If change is happening, it is happening around BCCI. And because they continue to hold all the best cards in the pack, they have the ability to make this transition work for them"
+          "body": "If change is happening, it is happening around BCCI. And because they continue to hold all the best cards in the pack, they have the ability to make this transition work for them."
         },
         {
           "id": 2,
