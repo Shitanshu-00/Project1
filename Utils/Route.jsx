@@ -1,5 +1,4 @@
 import React from 'react'
-import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
 import Splash from '../Screens/Splash';
@@ -19,7 +18,6 @@ const Stack = createNativeStackNavigator();
 export default function Route() {
     return (
         <NavigationContainer>
-            <StatusBar backgroundColor='#010' style='light' animated={true} />
             <Stack.Navigator initialRouteName='Splash' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='Splash' component={Splash} />
                 <Stack.Screen name='Register' component={Register} />

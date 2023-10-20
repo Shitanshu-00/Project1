@@ -1,12 +1,12 @@
 import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
-import { Styles } from "./Styles.BottomTab";
 import { COLORS, SIZES } from "../../constants/theme";
+import { bottomStyles } from "./Styles.BottomTab";
 
 const Fantacy = () => {
   return (
-    <SafeAreaView style={[Styles.container,{alignItems:'center', justifyContent:'center'}]}>
-      <View style={Styles.fantacyLogo}>
+    <SafeAreaView style={[bottomStyles.container,{alignItems:'center', justifyContent:'center'}]}>
+      <View style={bottomStyles.fantacyLogo}>
         <Text
           style={{
             fontSize: SIZES.Large,

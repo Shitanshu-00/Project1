@@ -70,7 +70,7 @@ const Profile = (props) => {
   };
 
   return (
-    <SafeAreaView style={Styles.container}>
+    <SafeAreaView style={[Styles.container,{paddingTop:0}]}>
       <View style={[Styles.rowView, { paddingHorizontal: width * 0.02 }]}>
         <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <Entypo name="chevron-small-left" size={30} color="white" />
@@ -79,14 +79,14 @@ const Profile = (props) => {
           Profile
         </Text>
       </View>
-      <View
+      <TouchableOpacity
         style={{
           alignItems: "center",
           justifyContent: "center",
           marginVertical: height * 0.04,
         }}>
         <Image source={icons.Profile} />
-      </View>
+      </TouchableOpacity>
       <ScrollView
         contentContainerStyle={{
           alignItems: "center",

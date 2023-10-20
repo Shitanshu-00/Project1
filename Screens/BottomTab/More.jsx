@@ -10,13 +10,13 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import icons from "../../constants/icons";
-import { Styles } from "./Styles.BottomTab";
 import { COLORS, SIZES } from "../../constants/theme";
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import { bottomStyles } from "./Styles.BottomTab";
 
 const { height, width } = Dimensions.get("screen");
 
@@ -56,12 +56,12 @@ const More = (props) => {
   };
 
   return (
-    <SafeAreaView style={Styles.container}>
-      <View style={[Styles.container, { backgroundColor: "#1C1B1D" }]}>
+    <SafeAreaView style={bottomStyles.container}>
+      <View style={[bottomStyles.container, { backgroundColor: "#1C1B1D" }]}>
         <View
           style={[
-            Styles.rowView,
-            { paddingTop: height * 0.06, paddingHorizontal: width * 0.04 },
+            bottomStyles.rowView,
+            { paddingTop: height * 0.02, paddingHorizontal: width * 0.04 },
           ]}>
           <Image
             source={icons.Dp}
@@ -74,21 +74,21 @@ const More = (props) => {
             <Text style={{ color: COLORS.white }}>{email}</Text>
           </View>
         </View>
-        <View style={[Styles.line, { marginTop: height * 0.03 }]}></View>
+        <View style={[bottomStyles.line, { marginTop: height * 0.03 }]}></View>
 
-        <View style={[Styles.rowView, { paddingHorizontal: width * 0.04 }]}>
+        <View style={[bottomStyles.rowView, { paddingHorizontal: width * 0.04 }]}>
           <MaterialCommunityIcons name="cricket" size={20} color="#fff" />
           <Text style={[styles.text, { marginHorizontal: width * 0.02 }]}>
             Cricket
           </Text>
         </View>
-        <View style={[Styles.rowView, { paddingHorizontal: width * 0.04 }]}>
+        <View style={[bottomStyles.rowView, { paddingHorizontal: width * 0.04 }]}>
           <Ionicons name="football" size={20} color="#fff" />
           <Text style={[styles.text, { marginHorizontal: width * 0.02 }]}>
             Football
           </Text>
         </View>
-        <View style={[Styles.rowView, { paddingHorizontal: width * 0.04 }]}>
+        <View style={[bottomStyles.rowView, { paddingHorizontal: width * 0.04 }]}>
           <MaterialCommunityIcons
             name="horse-variant-fast"
             size={20}
@@ -98,13 +98,13 @@ const More = (props) => {
             Horse Racing
           </Text>
         </View>
-        <View style={[Styles.rowView, { paddingHorizontal: width * 0.04 }]}>
+        <View style={[bottomStyles.rowView, { paddingHorizontal: width * 0.04 }]}>
           <Ionicons name="game-controller-outline" size={20} color="#fff" />
           <Text style={[styles.text, { marginHorizontal: width * 0.02 }]}>
             Esport
           </Text>
         </View>
-        <View style={Styles.line}></View>
+        <View style={bottomStyles.line}></View>
 
         <View style={{ paddingHorizontal: width * 0.04 }}>
           <Text
@@ -114,7 +114,7 @@ const More = (props) => {
           </Text>
           <Text style={styles.text}>Predictions</Text>
         </View>
-        <View style={Styles.line}></View>
+        <View style={bottomStyles.line}></View>
 
         <View style={{ paddingHorizontal: width * 0.04 }}>
           <Text style={styles.text}>Subscription</Text>
@@ -130,7 +130,7 @@ const More = (props) => {
         {/* <<-------------------- Footer Section --------------------->> */}
         <View style={{ alignItems: "center", marginVertical: height * 0.05 }}>
           <Text style={[styles.text, { fontWeight: "800" }]}># FOLLOW US</Text>
-          <View style={[Styles.rowView, { gap: width * 0.02 }]}>
+          <View style={[bottomStyles.rowView, { gap: width * 0.02 }]}>
             <TouchableOpacity
               onPress={() =>
                 Linking.openURL(

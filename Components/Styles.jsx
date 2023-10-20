@@ -33,7 +33,8 @@ export const Styles = StyleSheet.create({
     // fontFamily: FONTS.Roboto.regular,
     color: COLORS.red,
     marginVertical: -height * 0.01,
-    marginHorizontal: width * 0.02
+    marginHorizontal: width * 0.02,
+    fontSize: height*0.016
   },
   rowView: {
     flexDirection: 'row',

@@ -27,7 +27,7 @@ const ForgotPass = (props) => {
   const [visible, setVisible] = useState(false);
 
   const handleSubmit = (values) => {
-      auth().sendPasswordResetEmail(values.email).then(()=>{  ``
+      auth().sendPasswordResetEmail(values.email).then(()=>{
         setVisible(true);
         setTimeout(() => {
           props.navigation.replace("ResetPass");

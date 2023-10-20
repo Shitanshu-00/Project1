@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { Styles } from './Styles.BottomTab'
+import { bottomStyles } from './Styles.BottomTab'
 
 const News = () => {
   return (
-    <View style={Styles.container}>
+    <View style={bottomStyles.container}>
       <Text>News</Text>
     </View>
   )
