@@ -3,7 +3,9 @@
     "name": "Project1",
     "slug": "Project1",
     "version": "1.0.0",
-    "plugins": ["@react-native-google-signin/google-signin"],
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
     "orientation": "portrait",
     "icon": "./assets/Icons/AppIcon.png",
     "userInterfaceStyle": "light",
@@ -42,6 +44,6 @@
     "plugins": [
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
-    ] 
+    ]
   }
 }
