@@ -54,5 +54,12 @@ export const bottomStyles = StyleSheet.create({
         borderBottomLeftRadius:20,
         position:'absolute',
         right:0
+    },
+    NavView:{
+        height: height*0.04,
+        width: width*0.33,
+        backgroundColor: COLORS.red,
+        alignItems:'center',
+        justifyContent:'center'
     }
 })

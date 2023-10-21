@@ -32,7 +32,10 @@ import share from "../assets/Icons/Share.png";
 import soccer from "../assets/Icons/soccer-ball.png";
 import success from "../assets/Icons/Success.png";
 import twitter from "../assets/Icons/twitter.png";
-
+import netherlands from "../assets/Icons/netherlands.png";
+import newZealand from "../assets/Icons/new-zealand.png";
+import sriLanka from "../assets/Icons/sl.png";
+import UAE from "../assets/Icons/uae.png";
 
 export default {
   BackIcon,
@@ -69,4 +72,8 @@ export default {
   soccer,
   success,
   twitter,
+  netherlands,
+  newZealand,
+  sriLanka,
+  UAE,
 };

@@ -80,7 +80,7 @@ const HomeScreen = (props) => {
             <FlatList
               horizontal={true}
               showsHorizontalScrollIndicator={false}
-              data={Database.matches["ICC World Cup 2022"]}
+              data={Database.matches[0]["ICC World Cup 2022"]}
               renderItem={({ item, index }) => {
                 return (
                   <View style={bottomStyles.ScrollSm}>
@@ -91,7 +91,7 @@ const HomeScreen = (props) => {
                       </Text>
                       <View style={bottomStyles.LiveView}>
                         <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
-                          {item.status}
+                          {item.status === "LIVE" ? item.status : "Done"}
                         </Text>
                       </View>
                     </View>
@@ -103,23 +103,12 @@ const HomeScreen = (props) => {
                       <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
                         {item.country1.name}
                       </Text>
-                      <Text
-                        style={{
-                          color: "#fff",
-                          fontSize: height * 0.016,
-                          position: "absolute",
-                          right: width * 0.04,
-                        }}>
-                        {" "}
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, position: "absolute", right: width * 0.04 }}>
                         *{item.country1.runs}/{item.country1.wickets}(
                         {item.country1.overs}ov)
                       </Text>
                     </View>
-                    <View
-                      style={[
-                        bottomStyles.rowView,
-                        { marginVertical: height * 0.01 },
-                      ]}>
+                    <View style={[bottomStyles.rowView, { marginVertical: height * 0.01 }]}>
                       <Image
                         source={icons.flag_SA}
                         style={{ marginRight: width * 0.02 }}
@@ -127,11 +116,15 @@ const HomeScreen = (props) => {
                       <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
                         {item.country2.name}
                       </Text>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, position: "absolute", right: width * 0.04 }}>
+                        *{item.country2.runs}/{item.country2.wickets}(
+                        {item.country2.overs}ov)
+                      </Text>
                     </View>
 
                     <View style={[Styles.btn, { backgroundColor: COLORS.red, height: height * 0.03, marginRight: width * 0.02 }]}>
                       <Text style={{ color: "#fff", fontSize: height * 0.014 }}>
-                        {item.highlight}
+                        {item.highlight.length > 40 ? item.highlight.substring(0, 40) : item.highlight}
                       </Text>
                     </View>
                   </View>
