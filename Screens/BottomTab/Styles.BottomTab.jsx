@@ -56,9 +56,8 @@ export const bottomStyles = StyleSheet.create({
         right:0
     },
     NavView:{
-        height: height*0.04,
+        height: height*0.05,
         width: width*0.33,
-        backgroundColor: COLORS.red,
         alignItems:'center',
         justifyContent:'center'
     }

@@ -35,14 +35,15 @@ const HomeScreen = (props) => {
   // const users =  firestore().collection('users').doc(auth().currentUser.uid).get();
 
   useEffect(() => {
-    // getValue();
+    getValue();
   }, []);
 
   const getValue = async () => {
-    // if (auth().currentUser.displayName) {
-    //   setName(auth().currentUser.displayName);
-    // } else if {
-    // }
+    if (auth().currentUser.displayName) {
+      setName(auth().currentUser.displayName);
+    } else{
+      setName('Guest');
+    }
   };
 
   return (
@@ -64,7 +65,7 @@ const HomeScreen = (props) => {
             onPress={() => props.navigation.navigate("Profile")}>
             <Image source={icons.Profile_Sm} resizeMode="contain" style={{ width: height * 0.042, height: height * 0.042 }} />
             <Text style={bottomStyles.title_sm}>
-              {name.length > 10 ? name.substring(0, 10) + "..." : name}
+              {name.length > 10 ? name.substring(0, 10) + ".." : name}
             </Text>
           </TouchableOpacity>
         </View>
@@ -91,7 +92,7 @@ const HomeScreen = (props) => {
                       </Text>
                       <View style={bottomStyles.LiveView}>
                         <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
-                          {item.status === "LIVE" ? item.status : "Done"}
+                          {item.status === "LIVE" ? item.status : "RECENT"}
                         </Text>
                       </View>
                     </View>
@@ -169,10 +170,10 @@ const HomeScreen = (props) => {
           </View>
 
           {/* <<-------------------------- Trending News --------------------------->> */}
-          <Text style={[Styles.title, { color: "#010", fontWeight: "800", marginVertical: height * 0.01 }]}>
+          <Text style={[Styles.title, { color: "#010", fontWeight: "800", marginTop: height * 0.02 }]}>
             Trending News
           </Text>
-          <View style={[bottomStyles.ScrollSm, { width: width * 0.94, paddingLeft: 0, height: height * 0.39 }]}>
+          <View style={[bottomStyles.ScrollSm, { width: width * 0.94, paddingLeft: 0, height: height * 0.39, marginTop: height * 0.01 }]}>
             <Text style={{ color: "#fff", fontSize: height * 0.018, marginLeft: width * 0.04, marginBottom: height * 0.01 }}>
               T20 WORLD CUP 2022
             </Text>

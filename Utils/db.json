@@ -99,6 +99,86 @@
             "overs": 20
           }
         }
+      ],
+      "upcoming": [
+        {
+          "match": "7th",
+          "status": "Upcoming",
+          "group": "Group - B",
+          "venue": "Hobart",
+          "timing": "Tomorrow - 9:30 AM",
+          "country1": {
+            "name": "SL",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          },
+          "country2": {
+            "name": "NED",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          }
+        },
+        {
+          "match": "8th",
+          "status": "Upcoming",
+          "group": "Group - B",
+          "venue": "Hobart",
+          "timing": "Tomorrow - 9:30 AM",
+          "country1": {
+            "name": "NED",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          },
+          "country2": {
+            "name": "INDIA",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          }
+        }
+      ],
+      "CSA T20 Challenge": [
+        {
+          "match": "7th",
+          "status": "Upcoming",
+          "group": "Group - B",
+          "venue": "Hobart",
+          "timing": "Tomorrow - 9:30 AM",
+          "country1": {
+            "name": "SL",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          },
+          "country2": {
+            "name": "NED",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          }
+        },
+        {
+          "match": "8th",
+          "status": "Upcoming",
+          "group": "Group - B",
+          "venue": "Hobart",
+          "timing": "Tomorrow - 9:30 AM",
+          "country1": {
+            "name": "NED",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          },
+          "country2": {
+            "name": "INDIA",
+            "runs": null,
+            "wickets": null,
+            "overs": null
+          }
+        }
       ]
     }
   ],
