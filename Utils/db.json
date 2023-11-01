@@ -219,5 +219,46 @@
         }
       ]
     }
+  ],
+  "news": [
+    {
+      "stories": [
+        {
+          "id": 1,
+          "headline": "Harris,Redymayne star in heat’s comfortable win",
+          "time": "1h ago",
+          "leadPara": "The pair stiched an impressive opening stand of 165 to help brisbane heat down melbourne renegades by 21 runs.",
+          "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor integer adipiscing vel nec proin mi aenean. Fermentum gravida in blandit vulputate nec egestas nibh. Sagittis, nec non felis arcu id metus pretium ac malesuada. Quis lorem quam amet pellentesque mauris, id suspendisse neque quis. Laoreet habitant vel porttitor velit morbi vestibulum morbi. Et etiam volutpat malesuada ipsum, feugiat tristique diam. Turpis nam condimentum ac nullam mattis"
+        },
+        {
+          "id": 2,
+          "headline": "Harris,Redymayne star in heat’s comfortable win",
+          "time": "1h ago",
+          "leadPara": "The pair stiched an impressive opening stand of 165 to help brisbane heat down melbourne renegades by 21 runs.",
+          "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor integer adipiscing vel nec proin mi aenean. Fermentum gravida in blandit vulputate nec egestas nibh. Sagittis, nec non felis arcu id metus pretium ac malesuada. Quis lorem quam amet pellentesque mauris, id suspendisse neque quis. Laoreet habitant vel porttitor velit morbi vestibulum morbi. Et etiam volutpat malesuada ipsum, feugiat tristique diam. Turpis nam condimentum ac nullam mattis"
+        },
+        {
+          "id": 3,
+          "headline": "Harris,Redymayne star in heat’s comfortable win",
+          "time": "1h ago",
+          "leadPara": "The pair stiched an impressive opening stand of 165 to help brisbane heat down melbourne renegades by 21 runs.",
+          "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor integer adipiscing vel nec proin mi aenean. Fermentum gravida in blandit vulputate nec egestas nibh. Sagittis, nec non felis arcu id metus pretium ac malesuada. Quis lorem quam amet pellentesque mauris, id suspendisse neque quis. Laoreet habitant vel porttitor velit morbi vestibulum morbi. Et etiam volutpat malesuada ipsum, feugiat tristique diam. Turpis nam condimentum ac nullam mattis"
+        },
+        {
+          "id": 4,
+          "headline": "Harris,Redymayne star in heat’s comfortable win",
+          "time": "1h ago",
+          "leadPara": "The pair stiched an impressive opening stand of 165 to help brisbane heat down melbourne renegades by 21 runs.",
+          "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor integer adipiscing vel nec proin mi aenean. Fermentum gravida in blandit vulputate nec egestas nibh. Sagittis, nec non felis arcu id metus pretium ac malesuada. Quis lorem quam amet pellentesque mauris, id suspendisse neque quis. Laoreet habitant vel porttitor velit morbi vestibulum morbi. Et etiam volutpat malesuada ipsum, feugiat tristique diam. Turpis nam condimentum ac nullam mattis"
+        },
+        {
+          "id": 5,
+          "headline": "Harris,Redymayne star in heat’s comfortable win",
+          "time": "1h ago",
+          "leadPara": "The pair stiched an impressive opening stand of 165 to help brisbane heat down melbourne renegades by 21 runs.",
+          "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor integer adipiscing vel nec proin mi aenean. Fermentum gravida in blandit vulputate nec egestas nibh. Sagittis, nec non felis arcu id metus pretium ac malesuada. Quis lorem quam amet pellentesque mauris, id suspendisse neque quis. Laoreet habitant vel porttitor velit morbi vestibulum morbi. Et etiam volutpat malesuada ipsum, feugiat tristique diam. Turpis nam condimentum ac nullam mattis"
+        }
+      ]
+    }
   ]
 }
