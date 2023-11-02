@@ -11,6 +11,7 @@ import Splash from "../assets/Images/SplashLogo.png";
 import Story from "../assets/Images/story.png";
 import Thumbnail from "../assets/Images/Thumbnail.png";
 import Vector from "../assets/Images/Vector.png";
+import contact from "../assets/Images/contact.png"
 
 export default {
   Ad,
@@ -26,4 +27,5 @@ export default {
   Story,
   Thumbnail,
   Vector,
+  contact
 };

@@ -10,12 +10,12 @@ const Advertise = (props) => {
     <View
       style={[
         Styles.container,
-        { backgroundColor: "#fff", paddingHorizontal: width * 0.06},
+        { backgroundColor: "#fff", paddingHorizontal: width * 0.06 }
       ]}>
       <View
         style={[
           Styles.rowView,
-          { paddingVertical: height * 0.01, alignItems: "center" },
+          { paddingVertical: height * 0.01, alignItems: "center" }
         ]}>
         <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <Ionicons
@@ -33,12 +33,12 @@ const Advertise = (props) => {
         </Text>
       </View>
 
-      <View style={{ marginTop: height*0.01}}>
-        <Text style={{textAlign:'justify'}}>India strolled to a nine-wicket win against Thailand in the Women's T20 Asia Cup after spinners Deepti Sharma, Sneh Rana and Rajeshwari Gayakwad shared seven wickets between them. Thailand were restricted to 37, their third-lowest total in the Asia Cup, which table-toppers India then chased down in six overs, losing just one wicket.</Text>
+      <View style={{ marginTop: height * 0.01 }}>
+        <Text style={{ textAlign: 'justify' }}>India strolled to a nine-wicket win against Thailand in the Women's T20 Asia Cup after spinners Deepti Sharma, Sneh Rana and Rajeshwari Gayakwad shared seven wickets between them. Thailand were restricted to 37, their third-lowest total in the Asia Cup, which table-toppers India then chased down in six overs, losing just one wicket.</Text>
       </View>
 
-      <View style={{marginTop: height*0.1}}>
-        <Text style={{fontWeight:'bold', fontSize: height*0.025, marginBottom: height*0.02}}>Contact Details</Text>
+      <View style={{ marginTop: height * 0.1 }}>
+        <Text style={{ fontWeight: 'bold', fontSize: height * 0.025, marginBottom: height * 0.02 }}>Contact Details</Text>
         <Text>Email Address: tripathis1106@gmail.com</Text>
         <Text>Phone Number: +91-8484848484</Text>
       </View>

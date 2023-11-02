@@ -7,7 +7,7 @@ export const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.black,
-    paddingTop: height * 0.05,
+    paddingTop: height * 0.01,
   },
   container2: {
     flex: 1,

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import icons from "../../constants/icons";
-import { COLORS, SIZES } from "../../constants/theme";
+import { COLORS } from "../../constants/theme";
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
 import { Ionicons } from "@expo/vector-icons";
@@ -69,7 +69,7 @@ const More = (props) => {
           />
           <View style={{ paddingHorizontal: width * 0.04 }}>
             <Text style={{ color: COLORS.white, fontSize: height * 0.024 }}>
-              {users.map((user) => user.name)}
+              {auth().currentUser.displayName}
             </Text>
             <Text style={{ color: COLORS.white }}>{email}</Text>
           </View>
@@ -118,20 +118,21 @@ const More = (props) => {
 
         <View style={{ paddingHorizontal: width * 0.04 }}>
           <Text style={styles.text}>Subscription</Text>
-          <Text style={styles.text} onPress={()=>props.navigation.navigate('About')}>About Us</Text>
-          <Text style={styles.text}>Contact Us</Text>
-          <Text style={styles.text} onPress={()=>props.navigation.navigate('Advertise')}>Advertise with Us</Text>
-          <Text style={styles.text} onPress={()=>props.navigation.navigate('Privacy')}>Privacy Policy</Text>
+          <Text style={styles.text} onPress={() => props.navigation.navigate('About')}>About Us</Text>
+          <Text style={styles.text} onPress={()=> props.navigation.navigate('Contact')}>Contact Us</Text>
+          <Text style={styles.text} onPress={() => props.navigation.navigate('Advertise')}>Advertise with Us</Text>
+          <Text style={styles.text} onPress={() => props.navigation.navigate('Privacy')}>Privacy Policy</Text>
           <Text style={styles.text} onPress={() => handleLogout()}>
             Logout
           </Text>
         </View>
 
         {/* <<-------------------- Footer Section --------------------->> */}
-        <View style={{ alignItems: "center", marginVertical: height * 0.05 }}>
+        <View style={{ alignItems: "center", marginVertical: height * 0.005 }}>
           <Text style={[styles.text, { fontWeight: "800" }]}># FOLLOW US</Text>
           <View style={[bottomStyles.rowView, { gap: width * 0.02 }]}>
             <TouchableOpacity
+              style={{ backgroundColor: '#fff', borderRadius: 20 }}
               onPress={() =>
                 Linking.openURL(
                   "https://www.facebook.com/shitanshu.tripathi.351"
@@ -140,23 +141,24 @@ const More = (props) => {
               <Entypo name="facebook-with-circle" size={30} color="#337FFF" />
             </TouchableOpacity>
             <TouchableOpacity
+              style={{ backgroundColor: '#fff', borderRadius: 20 }}
               onPress={() =>
                 Linking.openURL("https://www.twitter.com/shitanshu__00")
               }>
               <Entypo name="twitter-with-circle" size={30} color="#33CCFF" />
             </TouchableOpacity>
 
-                <TouchableOpacity
-                  style={{ backgroundColor: "transparent" }}
-                  onPress={() =>
-                    Linking.openURL("https://www.instagram.com/Shitanshu_0")
-                  }>
-                  <Entypo
-                    name="instagram-with-circle"
-                    size={30}
-                    color="#5B4FE9"
-                  />
-                </TouchableOpacity>
+            <TouchableOpacity
+              style={{ backgroundColor: '#fff', borderRadius: 20 }}
+              onPress={() =>
+                Linking.openURL("https://www.instagram.com/Shitanshu_0")
+              }>
+              <Entypo
+                name="instagram-with-circle"
+                size={30}
+                color="#5B4FE9"
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -170,6 +172,6 @@ const styles = StyleSheet.create({
   text: {
     color: COLORS.white,
     fontSize: height * 0.02,
-    marginVertical: height * 0.005,
+    marginVertical: height * 0.008,
   },
 });
