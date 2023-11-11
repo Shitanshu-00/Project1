@@ -30,7 +30,7 @@ export const Styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   errors: {
-    // fontFamily: FONTS.Roboto.regular,
+    fontFamily: 'Roboto-Regular',
     color: COLORS.red,
     marginVertical: -height * 0.01,
     marginHorizontal: width * 0.02,
@@ -75,13 +75,13 @@ export const Styles = StyleSheet.create({
     right: width * 0.04
   },
   title: {
-    fontFamily: FONTS.Roboto.bold,
+    fontFamily: 'Roboto-Bold',
     color: '#fff',
     fontSize: SIZES.Large,
 
   },
   headText: {
-    fontFamily: FONTS.Roboto.bold,
+    fontFamily: 'Roboto-Bold',
     fontSize: height * 0.03,
   }
 

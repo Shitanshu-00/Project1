@@ -8,7 +8,8 @@ import {
   Dimensions,
   FlatList,
   Modal,
-  StyleSheet
+  StyleSheet,
+  TextInput
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { bottomStyles } from "./Styles.BottomTab";
@@ -23,6 +24,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from '@expo/vector-icons';
 import Share from 'react-native-share';
 import { StatusBar } from "expo-status-bar";
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
 const HomeScreen = (props) => {
   const [name, setName] = useState("Guest");
@@ -34,6 +36,15 @@ const HomeScreen = (props) => {
   const [Status, setStatus] = useState({});
   // const users =  firestore().collection('users').doc(auth().currentUser.uid).get();
 
+  // Search bar Animation 
+  const animation = useSharedValue(0);
+  const [value, setValue] = useState(0);
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      width: animation.value == 1 ? withTiming(width * 0.5, { duration: 500 }) : withTiming(0, { duration: 500 })
+    };
+  });
+
   useEffect(() => {
     getValue();
   }, []);
@@ -41,7 +52,7 @@ const HomeScreen = (props) => {
   const getValue = async () => {
     if (auth().currentUser.displayName) {
       setName(auth().currentUser.displayName);
-    } else{
+    } else {
       setName('Guest');
     }
   };
@@ -54,10 +65,22 @@ const HomeScreen = (props) => {
           <Image source={images.Logo_sm} />
         </View>
         <View style={[bottomStyles.rowView, { gap: 20 }]}>
-          <TouchableOpacity>
-            <Image source={icons.search} />
-          </TouchableOpacity>
-          <TouchableOpacity>
+          <Animated.View style={[{ width: width * 0.5, backgroundColor: value == 0 ? '#010' : '#e7e7e7', height: height * 0.04, borderRadius: 3, flexDirection: 'row', alignItems: 'center', paddingHorizontal: width * 0.02 }, animatedStyle]}>
+            <TextInput style={{ width: '85%' }} placeholder="Search here..." />
+            <TouchableOpacity onPress={() => {
+              if (animation.value == 0) {
+                animation.value = 1;
+                setValue(1);
+              } else {
+                animation.value = 0;
+                setValue(0);
+              }
+            }}>
+              <Image source={value == 0 ? icons.search : icons.notification_bell} />
+
+            </TouchableOpacity>
+          </Animated.View>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Notification')}>
             <Image source={icons.notification_bell} />
           </TouchableOpacity>
           <TouchableOpacity

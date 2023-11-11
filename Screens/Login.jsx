@@ -26,7 +26,6 @@ const Login = (props) => {
   const [visible, setVisible] = useState(true);
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log('Login');
     auth().signInWithEmailAndPassword(values.email, values.password)
       .then((response) => {
         props.navigation.navigate("BottomNav");
@@ -36,6 +35,8 @@ const Login = (props) => {
       .catch((error) => {
         if (error.code === "auth/user-not-found") {
           alert("User not found");
+        } else {
+          alert(error.code);
         }
       });
   };
@@ -115,7 +116,7 @@ const Login = (props) => {
                   />
                   <Text style={{ fontWeight: "bold" }}>Remember me</Text>
                 </View>
-                <Text style={{ color: COLORS.red, fontWeight: "bold" }} onPress={()=>props.navigation.navigate('ForgotPass')}>
+                <Text style={{ color: COLORS.red, fontWeight: "bold" }} onPress={() => props.navigation.navigate('ForgotPass')}>
                   Forgot Password?
                 </Text>
               </View>

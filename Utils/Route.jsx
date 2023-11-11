@@ -13,26 +13,28 @@ import Advertise from '../Screens/Advertise';
 import Privacy from '../Screens/Privacy';
 import Terms from '../Screens/Terms';
 import Contact from '../Screens/Contact';
+import Notification from '../Screens/Notification';
 
 const Stack = createNativeStackNavigator();
 
 export default function Route() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName='Splash' screenOptions={{ headerShown: false }}>
-                <Stack.Screen name='Splash' component={Splash} />
-                <Stack.Screen name='Register' component={Register} />
-                <Stack.Screen name='Login' component={Login} />
-                <Stack.Screen name='BottomNav' component={BottomNav} />
-                <Stack.Screen name='Profile' component={Profile} />
-                <Stack.Screen name='ForgotPass' component={ForgotPass} />
-                <Stack.Screen name='ResetPass' component={ResetPass}/>
-                <Stack.Screen name='About' component={About}/>
-                <Stack.Screen name='Advertise' component={Advertise}/>
-                <Stack.Screen name='Privacy' component={Privacy}/>
-                <Stack.Screen name='Terms' component={Terms}/>
-                <Stack.Screen name='Contact' component={Contact}/>
-            </Stack.Navigator>
-        </NavigationContainer>
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName='Splash' screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name='Splash' component={Splash} />
+                    <Stack.Screen name='Register' component={Register} />
+                    <Stack.Screen name='Login' component={Login} />
+                    <Stack.Screen name='BottomNav' component={BottomNav} />
+                    <Stack.Screen name='Profile' component={Profile} />
+                    <Stack.Screen name='ForgotPass' component={ForgotPass} />
+                    <Stack.Screen name='ResetPass' component={ResetPass} />
+                    <Stack.Screen name='About' component={About} />
+                    <Stack.Screen name='Advertise' component={Advertise} />
+                    <Stack.Screen name='Privacy' component={Privacy} />
+                    <Stack.Screen name='Terms' component={Terms} />
+                    <Stack.Screen name='Contact' component={Contact} />
+                    <Stack.Screen name='Notification' component={Notification} />
+                </Stack.Navigator>
+            </NavigationContainer>
     )
 }
