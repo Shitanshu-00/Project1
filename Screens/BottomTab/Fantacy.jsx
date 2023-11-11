@@ -7,7 +7,7 @@ const Fantacy = () => {
   return (
     <SafeAreaView style={bottomStyles.container}>
       <View style={{ backgroundColor: COLORS.black, height: height * 0.07, alignItems: 'flex-start', justifyContent: 'center', paddingHorizontal: width * 0.04 }}>
-        <Text style={{ color: COLORS.white, fontSize: height * 0.03, fontWeight: '800' }}>Fantacy</Text>
+        <Text style={{ color: COLORS.white, fontSize: height * 0.03,fontFamily:'Roboto-Bold' }}>Fantacy</Text>
       </View >
       <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
         <View style={bottomStyles.fantacyLogo}>
@@ -15,7 +15,8 @@ const Fantacy = () => {
             style={{
               fontSize: SIZES.Large,
               color: COLORS.white,
-              fontWeight: "bold",
+              fontFamily: 'Poppins-Bold',
+              letterSpacing: 2
             }}>
             COMING SOON!
           </Text>

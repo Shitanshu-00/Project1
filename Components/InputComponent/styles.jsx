@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
    },
     label: {
         color: COLORS.red,
-        fontFamily: FONTS.Roboto.regular,
+        fontFamily: 'Roboto-Regular',
+        fontSize: height*0.018
     
     },
     input:{

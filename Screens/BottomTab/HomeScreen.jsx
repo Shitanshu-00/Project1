@@ -66,7 +66,7 @@ const HomeScreen = (props) => {
         </View>
         <View style={[bottomStyles.rowView, { gap: 20 }]}>
           <Animated.View style={[{ width: width * 0.5, backgroundColor: value == 0 ? '#010' : '#e7e7e7', height: height * 0.04, borderRadius: 3, flexDirection: 'row', alignItems: 'center', paddingHorizontal: width * 0.02 }, animatedStyle]}>
-            <TextInput style={{ width: '85%' }} placeholder="Search here..." />
+            <TextInput style={{ width: '90%' }} placeholder="Search here..." />
             <TouchableOpacity onPress={() => {
               if (animation.value == 0) {
                 animation.value = 1;
@@ -76,7 +76,7 @@ const HomeScreen = (props) => {
                 setValue(0);
               }
             }}>
-              <Image source={value == 0 ? icons.search : icons.notification_bell} />
+              <Image source={value == 0 ? icons.search : icons.cross} resizeMode='contain' style={{ tintColor: COLORS.red, height: height * 0.02, width: height * 0.02 }} />
 
             </TouchableOpacity>
           </Animated.View>
@@ -87,7 +87,7 @@ const HomeScreen = (props) => {
             style={{ alignItems: "center" }}
             onPress={() => props.navigation.navigate("Profile")}>
             <Image source={icons.Profile_Sm} resizeMode="contain" style={{ width: height * 0.042, height: height * 0.042 }} />
-            <Text style={bottomStyles.title_sm}>
+            <Text style={[bottomStyles.title_sm,{fontFamily:'Poppins-Medium'}]}>
               {name.length > 10 ? name.substring(0, 10) + ".." : name}
             </Text>
           </TouchableOpacity>
@@ -97,7 +97,7 @@ const HomeScreen = (props) => {
       {/* <<-------------------------- Matches --------------------------->> */}
       <ScrollView>
         <View style={{ marginTop: height * 0.01, paddingLeft: width * 0.04, marginBottom: height * 0.02 }}>
-          <Text style={[Styles.title, { color: "#010", fontWeight: "800", marginVertical: height * 0.01 }]}>
+          <Text style={Styles.popTitle}>
             Matches
           </Text>
           <View style={{ height: height * 0.2 }}>
@@ -110,11 +110,11 @@ const HomeScreen = (props) => {
                   <View style={bottomStyles.ScrollSm}>
                     <View style={bottomStyles.rowView}>
                       <MaterialCommunityIcons name="cricket" size={20} color="#fff" />
-                      <Text style={{ color: "#fff", fontSize: height * 0.016, marginHorizontal: width * 0.02 }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, marginHorizontal: width * 0.02, fontFamily: 'Poppins-Medium' }}>
                         ICC World Cup 2022
                       </Text>
                       <View style={bottomStyles.LiveView}>
-                        <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
+                        <Text style={{ color: "#fff", fontSize: height * 0.016, fontFamily: 'Poppins-Medium' }}>
                           {item.status === "LIVE" ? item.status : "RECENT"}
                         </Text>
                       </View>
@@ -124,10 +124,10 @@ const HomeScreen = (props) => {
 
                     <View style={bottomStyles.rowView}>
                       <Image source={icons.flag_IN} style={{ marginRight: width * 0.02 }} />
-                      <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, fontFamily: 'Poppins-Medium' }}>
                         {item.country1.name}
                       </Text>
-                      <Text style={{ color: "#fff", fontSize: height * 0.016, position: "absolute", right: width * 0.04 }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, position: "absolute", right: width * 0.04, fontFamily: 'Poppins-Medium' }}>
                         *{item.country1.runs}/{item.country1.wickets}(
                         {item.country1.overs}ov)
                       </Text>
@@ -137,17 +137,17 @@ const HomeScreen = (props) => {
                         source={icons.flag_SA}
                         style={{ marginRight: width * 0.02 }}
                       />
-                      <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, fontFamily: 'Poppins-Medium' }}>
                         {item.country2.name}
                       </Text>
-                      <Text style={{ color: "#fff", fontSize: height * 0.016, position: "absolute", right: width * 0.04 }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, position: "absolute", right: width * 0.04, fontFamily: 'Poppins-Medium' }}>
                         *{item.country2.runs}/{item.country2.wickets}(
                         {item.country2.overs}ov)
                       </Text>
                     </View>
 
                     <View style={[Styles.btn, { backgroundColor: COLORS.red, height: height * 0.03, marginRight: width * 0.02 }]}>
-                      <Text style={{ color: "#fff", fontSize: height * 0.014 }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.014, fontFamily: 'Poppins-Regular' }}>
                         {item.highlight.length > 40 ? item.highlight.substring(0, 40) : item.highlight}
                       </Text>
                     </View>
@@ -160,7 +160,7 @@ const HomeScreen = (props) => {
           <Image source={images.Poster} style={{ marginVertical: height * 0.015, marginLeft: -width * 0.04 }} />
 
           {/* <<-------------------------- Trending Videos --------------------------->> */}
-          <Text style={[Styles.title, { color: "#010", fontWeight: "800", marginVertical: height * 0.01 }]}>
+          <Text style={Styles.popTitle}>
             Trending Videos
           </Text>
           <View style={{ height: height * 0.3 }}>
@@ -176,12 +176,12 @@ const HomeScreen = (props) => {
                       <AntDesign name="playcircleo" size={32} color={COLORS.white} style={{ position: "absolute" }} />
                     </TouchableOpacity>
                     <View style={{ padding: width * 0.02 }}>
-                      <Text style={{ color: "#fff", fontSize: height * 0.016 }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, fontFamily: 'Roboto-Bold' }}>
                         {item.title}
                       </Text>
-                      <View style={[bottomStyles.rowView, { marginTop: height * 0.005, alignItems: "center", paddingLeft: width * 0.01 }]}>
+                      <View style={[bottomStyles.rowView, { marginTop: height * 0.01, alignItems: "center", paddingLeft: width * 0.01 }]}>
                         <AntDesign name="clockcircleo" size={12} color="#fff" />
-                        <Text style={{ color: "#fff", fontSize: height * 0.014, marginLeft: width * 0.01 }}>
+                        <Text style={{ color: "#fff", fontSize: height * 0.014, marginLeft: width * 0.01, fontFamily: 'Arial' }}>
                           2 min ago
                         </Text>
                       </View>
@@ -193,20 +193,20 @@ const HomeScreen = (props) => {
           </View>
 
           {/* <<-------------------------- Trending News --------------------------->> */}
-          <Text style={[Styles.title, { color: "#010", fontWeight: "800", marginTop: height * 0.02 }]}>
+          <Text style={[Styles.popTitle, { marginTop: height * 0.02 }]}>
             Trending News
           </Text>
-          <View style={[bottomStyles.ScrollSm, { width: width * 0.94, paddingLeft: 0, height: height * 0.39, marginTop: height * 0.01 }]}>
-            <Text style={{ color: "#fff", fontSize: height * 0.018, marginLeft: width * 0.04, marginBottom: height * 0.01 }}>
+          <View style={[bottomStyles.ScrollSm, { width: width * 0.94, paddingLeft: 0, height: height * 0.39 }]}>
+            <Text style={{ color: "#fff", fontSize: height * 0.018, marginLeft: width * 0.04, marginBottom: height * 0.01, fontFamily: 'Poppins-Medium' }}>
               T20 WORLD CUP 2022
             </Text>
             <Image source={images.NewsImg} resizeMode="contain" style={{ width: width * 0.94 }} />
 
             <TouchableOpacity style={{ paddingHorizontal: width * 0.02 }} onPress={() => setNewsTab(true)}>
-              <Text style={{ color: "#fff", fontSize: height * 0.02, marginTop: height * 0.01, fontWeight: "800", }}>
+              <Text style={{ color: "#fff", fontSize: height * 0.02, marginTop: height * 0.01, fontWeight: "800", fontFamily: 'Roboto-Bold' }}>
                 {trending[0].news[0].headline}
               </Text>
-              <Text style={{ color: "#fff", fontSize: height * 0.015, textAlign: "justify" }}>
+              <Text style={{ color: "#fff", fontSize: height * 0.016, textAlign: "justify", fontFamily: 'Roboto-Regular' }}>
                 {trending[0].news[0].body}
               </Text>
               <Text style={{ color: COLORS.red, fontSize: height * 0.016, alignSelf: "flex-end", textDecorationLine: "underline" }}>
@@ -218,7 +218,7 @@ const HomeScreen = (props) => {
           <Image source={images.Ad} resizeMode="contain" style={{ width: "96%" }} />
 
           {/* <<-------------------------- ALL STORIES NEWS --------------------------->> */}
-          <Text style={[Styles.title, { color: "#010", fontWeight: "800", marginVertical: height * 0.01 }]}>
+          <Text style={Styles.popTitle}>
             ALL STORIES NEWS
           </Text>
           <View style={{ height: height * 0.4 }}>
@@ -229,16 +229,16 @@ const HomeScreen = (props) => {
               renderItem={({ item, index }) => {
                 return (
                   <View style={[bottomStyles.ScrollSm, { width: width * 0.94, paddingLeft: 0, height: height * 0.39 }]}>
-                    <Text style={{ color: "#fff", fontSize: height * 0.018, marginLeft: width * 0.04, marginBottom: height * 0.01 }}>
+                    <Text style={{ color: "#fff", fontSize: height * 0.018, marginLeft: width * 0.04, marginBottom: height * 0.01, fontFamily: 'Poppins-Medium' }}>
                       T20 WORLD CUP 2022
                     </Text>
                     <Image source={images.NewsImg} resizeMode="contain" style={{ width: width * 0.94 }} />
-                    <TouchableOpacity
-                      style={{ paddingHorizontal: width * 0.02 }} onPress={() => setNewsTab(true)}>
-                      <Text style={{ color: "#fff", fontSize: height * 0.02, marginTop: height * 0.01, fontWeight: "800" }}>
+
+                    <TouchableOpacity style={{ paddingHorizontal: width * 0.02 }} onPress={() => setNewsTab(true)}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.02, marginTop: height * 0.01, fontWeight: "800", fontFamily: 'Roboto-Bold' }}>
                         {trending[0].news[0].headline}
                       </Text>
-                      <Text style={{ color: "#fff", fontSize: height * 0.015, textAlign: "justify" }}>
+                      <Text style={{ color: "#fff", fontSize: height * 0.016, textAlign: "justify", fontFamily: 'Roboto-Regular' }}>
                         {trending[0].news[0].body}
                       </Text>
                       <Text style={{ color: COLORS.red, fontSize: height * 0.016, alignSelf: "flex-end", textDecorationLine: "underline" }}>

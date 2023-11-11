@@ -12,7 +12,7 @@ const News = () => {
     <View style={bottomStyles.container}>
        {/*<<--------------------Header-------------------->> */}
        <View style={{backgroundColor:COLORS.black, height: height*0.07, alignItems: 'flex-start', justifyContent: 'center', paddingHorizontal: width * 0.04 }}>
-        <Text style={{ color: COLORS.white, fontSize: height * 0.03, fontWeight: '800' }}>News</Text>
+        <Text style={{ color: COLORS.white, fontSize: height * 0.03, fontFamily:'Roboto-Bold' }}>News</Text>
       </View >
 
       <View style={{ backgroundColor: COLORS.black, height: height * 0.05, width: width }}>

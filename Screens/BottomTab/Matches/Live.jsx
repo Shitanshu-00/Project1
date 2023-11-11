@@ -13,7 +13,7 @@ const Live = () => {
             <View>
                 {/* <<-------------------------- East Asia-Pacific Matches --------------------------->> */}
                 <View style={{ backgroundColor: COLORS.red, marginVertical: height * 0.01, height: height * 0.05, paddingLeft: width * 0.04, justifyContent: 'center' }}>
-                    <Text style={{ color: "#fff", fontSize: height * 0.02 }}>ICC MENS T20 WORLD CUP EAST ASIA PACIFIC ...</Text>
+                    <Text style={{ color: "#fff", fontSize: height * 0.02, fontFamily:'Roboto-Regular', fontWeight:'bold' }}>ICC MENS T20 WORLD CUP EAST ASIA PACIFIC ...</Text>
                 </View>
 
                 <FlatList
@@ -76,7 +76,7 @@ const Live = () => {
                 INTERNATIONAL
             </Text>
             <View style={{ backgroundColor: COLORS.red, marginVertical: height * 0.01, height: height * 0.05, paddingLeft: width * 0.04, justifyContent: 'center' }}>
-                <Text style={{ color: "#fff", fontSize: height * 0.02 }}>ICC MENS T20 WORLD CUP 2022</Text>
+                <Text style={{ color: "#fff", fontSize: height * 0.02, fontFamily:'Roboto-Regular', fontWeight:'bold' }}>ICC MENS T20 WORLD CUP 2022</Text>
             </View>
 
             {/* <<-------------------------- International Matches --------------------------->> */}

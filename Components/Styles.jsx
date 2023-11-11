@@ -34,7 +34,7 @@ export const Styles = StyleSheet.create({
     color: COLORS.red,
     marginVertical: -height * 0.01,
     marginHorizontal: width * 0.02,
-    fontSize: height*0.016
+    fontSize: height * 0.016
   },
   rowView: {
     flexDirection: 'row',
@@ -83,7 +83,13 @@ export const Styles = StyleSheet.create({
   headText: {
     fontFamily: 'Roboto-Bold',
     fontSize: height * 0.03,
-  }
+  },
 
+  popTitle: {
+    color: "#010",
+    fontFamily: 'Poppins-Bold',
+    marginVertical: height * 0.01,
+    fontSize: SIZES.Large,
+  }
 
 });

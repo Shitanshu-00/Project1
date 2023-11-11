@@ -68,10 +68,10 @@ const More = (props) => {
             style={{ height: height * 0.07, width: height * 0.07 }}
           />
           <View style={{ paddingHorizontal: width * 0.04 }}>
-            <Text style={{ color: COLORS.white, fontSize: height * 0.024 }}>
+            <Text style={{ color: COLORS.white, fontSize: height * 0.024, fontFamily:'Roboto-Bold' }}>
               {auth().currentUser.displayName}
             </Text>
-            <Text style={{ color: COLORS.white }}>{email}</Text>
+            <Text style={{ color: COLORS.white, fontFamily:'Roboto-Regular' }}>{email}</Text>
           </View>
         </View>
         <View style={[bottomStyles.line, { marginTop: height * 0.03 }]}></View>
@@ -129,7 +129,7 @@ const More = (props) => {
 
         {/* <<-------------------- Footer Section --------------------->> */}
         <View style={{ alignItems: "center", marginVertical: height * 0.005 }}>
-          <Text style={[styles.text, { fontWeight: "800" }]}># FOLLOW US</Text>
+          <Text style={[styles.text, { fontFamily:'Lato-Bold'}]}># FOLLOW US</Text>
           <View style={[bottomStyles.rowView, { gap: width * 0.02 }]}>
             <TouchableOpacity
               style={{ backgroundColor: '#fff', borderRadius: 20 }}
@@ -170,6 +170,7 @@ export default More;
 
 const styles = StyleSheet.create({
   text: {
+    fontFamily:'Roboto-Regular',
     color: COLORS.white,
     fontSize: height * 0.02,
     marginVertical: height * 0.008,

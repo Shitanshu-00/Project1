@@ -24,7 +24,7 @@ const Upcoming = () => {
                             data={Database.matches[0].upcoming}
                             renderItem={({ item, index }) => {
                                 return (
-                                    <TouchableOpacity style={[bottomStyles.ScrollSm, { width: width * 0.9, marginBottom: height * 0.025, paddingLeft: width * 0.04, height: height * 0.1 }]}>
+                                    <TouchableOpacity style={[bottomStyles.ScrollSm, { width: width * 0.92, marginBottom: height * 0.025, paddingLeft: width * 0.04, height: height * 0.1, marginHorizontal: width*0.04 }]}>
                                         <View style={[bottomStyles.rowView, { marginBottom: height * 0.01, justifyContent: 'space-between', paddingRight: width * 0.04 }]}>
                                             <Text style={{ color: "#fff", fontSize: height * 0.014 }}>
                                                 {item.match} Match
@@ -68,13 +68,12 @@ const Upcoming = () => {
                 </View>
 
                 {/* <<-------------------------- International Matches --------------------------->> */}
-                <View style={{ flex: 1, paddingHorizontal: width * 0.05 }}>
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         data={Database.matches[0].upcoming}
                         renderItem={({ item, index }) => {
                             return (
-                                <TouchableOpacity style={[bottomStyles.ScrollSm, { width: width * 0.9, marginBottom: height * 0.025, paddingLeft: width * 0.04, height: height * 0.1 }]}>
+                                <TouchableOpacity style={[bottomStyles.ScrollSm, { width: width * 0.92, marginBottom: height * 0.025, paddingLeft: width * 0.04, height: height * 0.1, marginHorizontal: width*0.04 }]}>
                                     <View style={[bottomStyles.rowView, { marginBottom: height * 0.01, justifyContent: 'space-between', paddingRight: width * 0.04 }]}>
                                         <Text style={{ color: "#fff", fontSize: height * 0.014 }}>
                                             {item.match} Match
@@ -105,7 +104,6 @@ const Upcoming = () => {
                         }}
                         ListFooterComponent={<BottomFlatlist/>}
                     />
-                </View>
             </View>
 
     )

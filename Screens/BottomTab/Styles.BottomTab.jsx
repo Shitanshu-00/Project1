@@ -31,6 +31,7 @@ export const bottomStyles = StyleSheet.create({
         color: '#fff',
         fontSize:height*0.014,
         marginBottom:-15,
+        fontFamily:'Roboto-Regular'
     },
     line: {
         borderWidth: 1,

@@ -36,6 +36,7 @@ import netherlands from "../assets/Icons/netherlands.png";
 import newZealand from "../assets/Icons/new-zealand.png";
 import sriLanka from "../assets/Icons/sl.png";
 import UAE from "../assets/Icons/uae.png";
+import cross from "../assets/Icons/delete.png";
 
 export default {
   BackIcon,
@@ -76,4 +77,5 @@ export default {
   newZealand,
   sriLanka,
   UAE,
+  cross
 };
