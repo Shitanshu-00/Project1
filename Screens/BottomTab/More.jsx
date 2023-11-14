@@ -23,7 +23,6 @@ const { height, width } = Dimensions.get("screen");
 // <<-------------------- Main Function --------------------->>
 const More = (props) => {
   const [user, setUser] = useState(null);
-  const email = auth().currentUser.email;
   const [name, setName] = useState('')
 
   useEffect(() => {
@@ -69,7 +68,7 @@ const More = (props) => {
             <Text style={{ color: COLORS.white, fontSize: height * 0.024, fontFamily: 'Roboto-Bold' }}>
               {name}
             </Text>
-            <Text style={{ color: COLORS.white, fontFamily: 'Roboto-Regular' }}>{email}</Text>
+            <Text style={{ color: COLORS.white, fontFamily: 'Roboto-Regular' }}>{auth().currentUser.email}</Text>
           </View>
         </View>
         <View style={[bottomStyles.line, { marginTop: height * 0.03 }]}></View>
