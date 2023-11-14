@@ -22,10 +22,9 @@ const { height, width } = Dimensions.get("screen");
 
 // <<-------------------- Main Function --------------------->>
 const More = (props) => {
-  const uid = auth().currentUser.uid;
-  const dbRef = firestore().collection("users");
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState(null);
   const email = auth().currentUser.email;
+  const [name, setName] = useState('')
 
   useEffect(() => {
     readData();
@@ -33,26 +32,25 @@ const More = (props) => {
 
   // <<-------------------- Logout Function --------------------->>
   const handleLogout = () => {
-    auth().signOut().then(alert("User signed out!"));
-    props.navigation.navigate("Login");
+    auth().signOut()
+      .then(() => {
+        alert("User signed out!");
+        props.navigation.navigate("Login")
+      })
   };
 
   // <<-------------------- Reading Data from Firestore Database --------------------->>
+  const dbRef = firestore().collection("users").doc(`${auth().currentUser.uid}`); // Reference to current user's document
   const readData = async () => {
-    await dbRef.onSnapshot((querySnapshot) => {
-      const user = [];
-      querySnapshot.forEach((doc) => {
-        const { name, contact, city, state, pincode } = doc.data();
-        user.push({
-          name,
-          contact,
-          city,
-          state,
-          pincode,
-        });
-        setUsers([...user]);
-      });
+    dbRef.onSnapshot(dataSnap => {
+      const userData = dataSnap.data();
+      setUser(userData)
     });
+    if (!user.name) {
+      setName("Ananymous");
+    } else {
+      setName(user.name)
+    }
   };
 
   return (
@@ -68,10 +66,10 @@ const More = (props) => {
             style={{ height: height * 0.07, width: height * 0.07 }}
           />
           <View style={{ paddingHorizontal: width * 0.04 }}>
-            <Text style={{ color: COLORS.white, fontSize: height * 0.024, fontFamily:'Roboto-Bold' }}>
-              {auth().currentUser.displayName}
+            <Text style={{ color: COLORS.white, fontSize: height * 0.024, fontFamily: 'Roboto-Bold' }}>
+              {name}
             </Text>
-            <Text style={{ color: COLORS.white, fontFamily:'Roboto-Regular' }}>{email}</Text>
+            <Text style={{ color: COLORS.white, fontFamily: 'Roboto-Regular' }}>{email}</Text>
           </View>
         </View>
         <View style={[bottomStyles.line, { marginTop: height * 0.03 }]}></View>
@@ -119,7 +117,7 @@ const More = (props) => {
         <View style={{ paddingHorizontal: width * 0.04 }}>
           <Text style={styles.text}>Subscription</Text>
           <Text style={styles.text} onPress={() => props.navigation.navigate('About')}>About Us</Text>
-          <Text style={styles.text} onPress={()=> props.navigation.navigate('Contact')}>Contact Us</Text>
+          <Text style={styles.text} onPress={() => props.navigation.navigate('Contact')}>Contact Us</Text>
           <Text style={styles.text} onPress={() => props.navigation.navigate('Advertise')}>Advertise with Us</Text>
           <Text style={styles.text} onPress={() => props.navigation.navigate('Privacy')}>Privacy Policy</Text>
           <Text style={styles.text} onPress={() => handleLogout()}>
@@ -129,7 +127,7 @@ const More = (props) => {
 
         {/* <<-------------------- Footer Section --------------------->> */}
         <View style={{ alignItems: "center", marginVertical: height * 0.005 }}>
-          <Text style={[styles.text, { fontFamily:'Lato-Bold'}]}># FOLLOW US</Text>
+          <Text style={[styles.text, { fontFamily: 'Lato-Bold' }]}># FOLLOW US</Text>
           <View style={[bottomStyles.rowView, { gap: width * 0.02 }]}>
             <TouchableOpacity
               style={{ backgroundColor: '#fff', borderRadius: 20 }}
@@ -170,7 +168,7 @@ export default More;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily:'Roboto-Regular',
+    fontFamily: 'Roboto-Regular',
     color: COLORS.white,
     fontSize: height * 0.02,
     marginVertical: height * 0.008,
