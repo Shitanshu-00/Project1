@@ -8,6 +8,7 @@ import More from "./BottomTab/More";
 import { Dimensions, Image } from "react-native";
 import { COLORS } from "../constants/theme";
 import icons from "../constants/icons";
+import { Entypo } from '@expo/vector-icons';
 
 const { height, width } = Dimensions.get("window");
 const Bottom = createBottomTabNavigator();
@@ -28,12 +29,7 @@ const BottomNav = () => {
         options={{
           tabBarIcon: (tabClick) => {
             return (
-              <Image
-                source={icons.Home}
-                style={{
-                  tintColor: tabClick.focused ? COLORS.red : COLORS.white,
-                }}
-              />
+              <Entypo name="home" size={24} color={tabClick.focused ? COLORS.red : COLORS.white} />
             );
           },
         }}
@@ -60,12 +56,7 @@ const BottomNav = () => {
         options={{
           tabBarIcon: (tabClick) => {
             return (
-              <Image
-                source={icons.fantacy}
-                style={{
-                  tintColor: tabClick.focused ? COLORS.red : COLORS.white,
-                }}
-              />
+              <Entypo name="trophy" size={24} color={tabClick.focused ? COLORS.red : COLORS.white} />
             );
           },
         }}
@@ -76,12 +67,7 @@ const BottomNav = () => {
         options={{
           tabBarIcon: (tabClick) => {
             return (
-              <Image
-                source={icons.news}
-                style={{
-                  tintColor: tabClick.focused ? COLORS.red : COLORS.white,
-                }}
-              />
+              <Entypo name="news" size={24} color={tabClick.focused ? COLORS.red : COLORS.white} />
             );
           },
         }}
