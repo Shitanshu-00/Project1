@@ -16,8 +16,8 @@ import { loginSchema } from "../Utils/Schema";
 import Checkbox from "expo-checkbox";
 import Button from "../Components/Button";
 import icons from "../constants/icons";
-import auth from '@react-native-firebase/auth'
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import auth from '@react-native-firebase/auth';
+import firestore from "@react-native-firebase/firestore";
 
 const { height, width } = Dimensions.get("window");
 
@@ -25,12 +25,12 @@ const Login = (props) => {
   const [checked, setChecked] = useState(false);
   const [visible, setVisible] = useState(true);
 
+  /*----- Login using Email and Password -----*/
+
   const handleSubmit = (values, { resetForm }) => {
     auth().signInWithEmailAndPassword(values.email, values.password)
-      .then((response) => {
+      .then(() => {
         props.navigation.navigate("BottomNav");
-        AsyncStorage.setItem('UserId', response.user.uid);
-        resetForm();
       })
       .catch((error) => {
         if (error.code === "auth/user-not-found") {
@@ -40,6 +40,8 @@ const Login = (props) => {
         }
       });
   };
+
+  // <<-------------------- Main Function --------------------->>
 
   return (
     <SafeAreaView style={Styles.container}>

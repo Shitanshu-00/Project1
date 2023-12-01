@@ -20,11 +20,9 @@ import { bottomStyles } from "./Styles.BottomTab";
 
 const { height, width } = Dimensions.get("screen");
 
-// <<-------------------- Main Function --------------------->>
 const More = (props) => {
-  const [user, setUser] = useState(null);
-  const [name, setName] = useState('')
-
+  const [user, setUser] = useState();
+  const [name, setName] = useState('Anonymous');
   useEffect(() => {
     readData();
   }, []);
@@ -39,19 +37,19 @@ const More = (props) => {
   };
 
   // <<-------------------- Reading Data from Firestore Database --------------------->>
-  const dbRef = firestore().collection("users").doc(`${auth().currentUser.uid}`); // Reference to current user's document
   const readData = async () => {
-    dbRef.onSnapshot(dataSnap => {
-      const userData = dataSnap.data();
-      setUser(userData)
-    });
-    if (!user.name) {
-      setName("Ananymous");
-    } else {
-      setName(user.name)
+    const dbRef = firestore().collection("users").doc(`${auth().currentUser.uid}`); // Reference to current user's document
+    const userData = (await dbRef.get()).data();
+    setUser({ ...userData });
+    if(userData || auth().currentUser){
+      if (userData.name || auth().currentUser.displayName) {
+        setName(userData.name || auth().currentUser.displayName);
+      }
     }
+    
   };
 
+  // <<-------------------- Main Function --------------------->>
   return (
     <SafeAreaView style={bottomStyles.container}>
       <View style={[bottomStyles.container, { backgroundColor: "#1C1B1D" }]}>
@@ -75,7 +73,7 @@ const More = (props) => {
 
         <View style={[bottomStyles.rowView, { paddingHorizontal: width * 0.04 }]}>
           <MaterialCommunityIcons name="cricket" size={20} color="#fff" />
-          <Text style={[styles.text, { marginHorizontal: width * 0.02 }]}>
+          <Text style={[styles.text, { marginHorizontal: width * 0.02 }]} onPress={() => props.navigation.navigate('Matches')}>
             Cricket
           </Text>
         </View>
@@ -125,7 +123,7 @@ const More = (props) => {
         </View>
 
         {/* <<-------------------- Footer Section --------------------->> */}
-        <View style={{ alignItems: "center", marginVertical: height * 0.005 }}>
+        <View style={{ alignItems: "center", marginVertical: height * 0.05 }}>
           <Text style={[styles.text, { fontFamily: 'Lato-Bold' }]}># FOLLOW US</Text>
           <View style={[bottomStyles.rowView, { gap: width * 0.02 }]}>
             <TouchableOpacity

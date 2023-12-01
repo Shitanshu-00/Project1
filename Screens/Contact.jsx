@@ -14,7 +14,7 @@ const Contact = (props) => {
                     <Entypo name="chevron-small-left" size={30} color="white" />
                 </TouchableOpacity>
             </View>
-            <View style={{ backgroundColor: COLORS.black, height: height * 0.48, borderBottomLeftRadius: 25, borderBottomRightRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ backgroundColor: COLORS.black, height: height * 0.45, borderBottomLeftRadius: 35, borderBottomRightRadius: 35, alignItems: 'center', justifyContent: 'center' }}>
                 <Image source={images.contact} />
                 <Text style={[Styles.headText, { color: COLORS.white, marginTop: height * 0.02 }]}>Contact Us</Text>
                 <Text style={{ fontFamily: 'Roboto-Regular', color: COLORS.white, fontSize: height * 0.018, marginTop: height * 0.01 }}>Have any questions? We’d love to hear from you.</Text>

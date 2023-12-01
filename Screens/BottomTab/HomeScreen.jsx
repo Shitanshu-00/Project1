@@ -25,6 +25,8 @@ import { Entypo } from '@expo/vector-icons';
 import Share from 'react-native-share';
 import { StatusBar } from "expo-status-bar";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import firestore from "@react-native-firebase/firestore";
+
 
 const HomeScreen = (props) => {
   const [name, setName] = useState("Guest");
@@ -34,7 +36,6 @@ const HomeScreen = (props) => {
   const [orientationLandscape, setOrientation] = useState(true);
   const videoRef = useRef(null);
   const [Status, setStatus] = useState({});
-  // const users =  firestore().collection('users').doc(auth().currentUser.uid).get();
 
   // Search bar Animation 
   const animation = useSharedValue(0);
@@ -50,10 +51,11 @@ const HomeScreen = (props) => {
   }, []);
 
   const getValue = async () => {
-    if (auth().currentUser.displayName) {
-      setName(auth().currentUser.displayName);
-    } else {
-      setName('Guest');
+    const userData = (await firestore().collection("users").doc(`${auth().currentUser.uid}`).get()).data();
+    if(userData || auth().currentUser){
+      if (userData.name || auth().currentUser.displayName) {
+        setName(userData.name || auth().currentUser.displayName);
+      }
     }
   };
 
@@ -87,7 +89,7 @@ const HomeScreen = (props) => {
             style={{ alignItems: "center" }}
             onPress={() => props.navigation.navigate("Profile")}>
             <Image source={icons.Profile_Sm} resizeMode="contain" style={{ width: height * 0.042, height: height * 0.042 }} />
-            <Text style={[bottomStyles.title_sm,{fontFamily:'Poppins-Medium'}]}>
+            <Text style={[bottomStyles.title_sm, { fontFamily: 'Poppins-Medium' }]}>
               {name.length > 10 ? name.substring(0, 10) + ".." : name}
             </Text>
           </TouchableOpacity>

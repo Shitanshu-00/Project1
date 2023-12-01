@@ -16,9 +16,9 @@ import Button from "../Components/Button";
 import { COLORS } from "../constants/theme";
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Formik } from "formik";
 import * as yup from "yup";
+import DatePicker from "../Components/DatePicker";
 
 const validationSchema = yup.object().shape({
   name: yup
@@ -50,27 +50,33 @@ const validationSchema = yup.object().shape({
     .min(3, "City should have atleast 3 characters"),
 });
 
-// <<-------------------- Main Function --------------------->>
+
 const Profile = (props) => {
-  const userId = auth().currentUser.uid;
-  const dbRef = firestore().collection("users").doc(userId);
-  const email = {'email': auth().currentUser.email};
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     getData();
   }, []);
 
+  const dbRef = firestore().collection("users").doc(`${auth().currentUser.uid}`); // Reference to the current user's document
+
+  // <<-------------------- Read Data from Firestore Database --------------------->>
   const getData = async () => {
-    // console.log(dbRef);
+    const userData = (await dbRef.get()).data();
+    setUser({ ...userData });
   };
 
+  // <<-------------------- Updating User Data to Firestore --------------------->>
   const handleSubmit = (values) => {
-    dbRef.set(values);
-    dbRef.update(email)
+    dbRef.update(values).then(() => {
+      alert("User data updated!");
+      props.navigation.goBack();
+    })
   };
 
+  // <<-------------------- Main Function --------------------->>
   return (
-    <SafeAreaView style={[Styles.container,{paddingTop:0}]}>
+    <SafeAreaView style={[Styles.container, { paddingTop: 0 }]}>
       <View style={[Styles.rowView, { paddingHorizontal: width * 0.02 }]}>
         <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <Entypo name="chevron-small-left" size={30} color="white" />
@@ -120,11 +126,7 @@ const Profile = (props) => {
                 value={values.name}
                 maxLength={25}
               />
-              <Text
-                style={[
-                  Styles.errors,
-                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
-                ]}>
+              <Text style={[Styles.errors, { marginTop: height * 0.005, marginHorizontal: width * 0.04 }]}>
                 {touched.name && errors.name}
               </Text>
 
@@ -132,7 +134,7 @@ const Profile = (props) => {
                 title={"Email*"}
                 editable={false}
                 top={height * 0.015}
-                value={email.email}
+                value={auth().currentUser.email}
               />
 
               <Input
@@ -143,15 +145,11 @@ const Profile = (props) => {
                 value={values.contact}
                 maxLength={10}
               />
-              <Text
-                style={[
-                  Styles.errors,
-                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
-                ]}>
+              <Text style={[Styles.errors, { marginTop: height * 0.005, marginHorizontal: width * 0.04 }]}>
                 {touched.contact && errors.contact}
               </Text>
 
-              <Input title={"Date of Birth"} top={height * 0.015} />
+              <DatePicker title={"Date of Birth"} top={height * 0.015} />
 
               <Input
                 title={"Country"}
@@ -161,11 +159,7 @@ const Profile = (props) => {
                 value={values.country}
                 maxLength={16}
               />
-              <Text
-                style={[
-                  Styles.errors,
-                  { marginTop: height * 0.005, marginHorizontal: width * 0.04 },
-                ]}>
+              <Text style={[Styles.errors, { marginTop: height * 0.005, marginHorizontal: width * 0.04 }]}>
                 {touched.country && errors.country}
               </Text>
 

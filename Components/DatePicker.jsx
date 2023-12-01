@@ -1,53 +1,66 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
-  Dimensions,
-  Image,
+  Pressable,
+  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {profile} from './Styles';
-import icons from '../constants/icons';
+import { AntDesign } from '@expo/vector-icons';
+import { styles } from './InputComponent/styles';
 
 
-const DatePicker = ({disable}) => {
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [birthDate, setBirthDate] = useState(new Date());
+const DatePicker = ({ top, title, value }) => {
+  const [showPicker, setShowPicker] = useState(false);
+  const [date, setDate] = useState(new Date());
+  const [birthDate, setBirthDate] = useState('01/01/1923');
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
+  const togglePicker = () => {
+    setShowPicker(!showPicker);
   };
 
-  const handleConfirm = value => {
-    console.warn('A date has been picked: ', date);
-    setBirthDate(value);
-    hideDatePicker();
-  };
+  const onChange = ({ type }, selectedDate) => {
+    if (type == 'set') {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+    togglePicker();
+    setBirthDate(currentDate.toDateString());
+    } else {
+    togglePicker();
+    }
+  }
 
   return (
-    <View>
-      <TextInput
-        style={profile.inputView}
-        defaultValue={birthDate.toLocaleDateString()}
-        editable={false}
-      />
-        {isDatePickerVisible && (
-        <DateTimePicker
+    <View style={{ marginTop: top }}>
+      <View style={styles.labelWrapper}>
+        <Text style={styles.label}>{title}</Text>
+      </View>
+      <Pressable onPress={togglePicker}>
+        <TextInput
+          style={styles.input}
+          defaultValue={birthDate}
           value={birthDate}
-          mode={'date'}
-          display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-          is24Hour={true}
-          onConfirm={handleConfirm}
+          onChangeText={setBirthDate}
+          editable={false}
         />
+        {showPicker && (
+          <DateTimePicker
+            value={date}
+            mode="date"
+            display="default"
+            is24Hour={true}
+            onConfirm={onChange}
+          />
         )}
-      {!isDatePickerVisible && (
-      <TouchableOpacity onPress={()=>showDatePicker} disabled={disable}>
-        <Image
-          source={icons.calendar}
-          style={profile.calendar}
-        />
-      </TouchableOpacity>)}
+
+        <TouchableOpacity onPress={togglePicker} style={{
+          position: 'absolute',
+          right: '5%', top: '20%'
+        }}>
+          <AntDesign name="calendar" size={24} color="white" />
+        </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };

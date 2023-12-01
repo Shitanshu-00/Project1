@@ -21,6 +21,7 @@ import icons from "../constants/icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 import { modal } from "./Styles/screenStyles";
 
 const { height, width } = Dimensions.get("window");
@@ -33,9 +34,8 @@ const Register = (props) => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
-  {
-    /*----- Google SignIn ----- */
-  }
+  /*----- Google SignIn ----- */
+
   GoogleSignin.configure({
     webClientId:
       "245289014657-3km5nj21g20vkr87109c8uu4jdphd8ti.apps.googleusercontent.com",
@@ -60,41 +60,58 @@ const Register = (props) => {
     auth().signInWithCredential(googleCredential)
       .then((res) => {
         const user = JSON.stringify(res);
-        AsyncStorage.setItem("User", user);
         props.navigation.navigate("BottomNav");
+        firestore().collection("users").doc(`${auth().currentUser.uid}`)
+          .set({
+            city: "",
+            contact: "",
+            country: "",
+            dob: "",
+            email: auth().currentUser.email,
+            name: "",
+            state: ""
+          });
       })
       .catch((error) => {
         alert(error);
       });
   };
 
+  // const createUserDoc = () =>{
+
+  // }
   /*----- Registration using Email and Password -----*/
 
   const handleSubmit = (values, { resetForm }) => {
     auth().createUserWithEmailAndPassword(values.email, values.password)
       .then((res) => {
         setLoading(true);
-        auth().currentUser.sendEmailVerification()
-    //     setTimeout(()=>{
-    //       if (auth().currentUser.emailVerified) {
-    //         setLoading(false);
-    //         props.navigation.navigate("Login");
-    //       }else{
-    //         auth().currentUser.delete()
-    //       }
-    //     },5000);
-       
-    //     // console.log(res)
-    //     // resetForm();
+      }).then(() => {
+        auth().currentUser.sendEmailVerification();
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+
+        firestore().collection("users").doc(`${auth().currentUser.uid}`)
+          .set({
+            city: "",
+            contact: "",
+            country: "",
+            dob: "",
+            email: values.email,
+            name: "",
+            state: ""
+          });
+        resetForm();
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
           alert("Email address is already in use");
         }
-        if (error.code === "auth/invalid-email") {
+        else if (error.code === "auth/invalid-email") {
           alert("Enter valid Email Address");
         } else {
-          alert(error.code)
+          alert(error.code + error.message);
         }
       });
   };
@@ -216,17 +233,14 @@ const Register = (props) => {
             Already have an account?{" "}
             <Text
               style={{ color: COLORS.red, fontWeight: "bold" }}
-              onPress={() => props.navigation.navigate("Login")}>
-              {" "}
-              Log In{" "}
-            </Text>{" "}
+              onPress={() => props.navigation.navigate("Login")}>Log In</Text>
           </Text>
           {
             <Modal visible={loading} transparent>
               <View style={modal.container}>
-                <View style={[modal.centerView, {alignItems:'center', justifyContent:'center'}]}>
+                <View style={[modal.centerView, { alignItems: 'center', justifyContent: 'center' }]}>
                   <ActivityIndicator size={'large'} color={COLORS.red} />
-                  <Text style={{textAlign:'center'}}>A verification link has been sent to your registered email address.</Text>
+                  <Text style={{ textAlign: 'center' }}>A verification link has been sent to your registered email address.</Text>
                 </View>
               </View>
             </Modal>
