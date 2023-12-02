@@ -32,7 +32,7 @@ const More = (props) => {
     auth().signOut()
       .then(() => {
         alert("User signed out!");
-        props.navigation.navigate("Login")
+        props.navigation.replace("Login")
       })
   };
 
